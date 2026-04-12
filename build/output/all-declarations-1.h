@@ -2686,11 +2686,6 @@ class GALGAS_semanticContext : public AC_GALGAS_root {
     return mProperty_mSyntaxComponentMapForSemanticAnalysis ;
   }
 
-  public: GALGAS_bool mProperty_galgas_34_ ;
-  public: inline GALGAS_bool readProperty_galgas_34_ (void) const {
-    return mProperty_galgas_34_ ;
-  }
-
 //--------------------------------- Accessors
   public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
   public: VIRTUAL_IN_DEBUG void drop (void) override ;
@@ -2727,10 +2722,6 @@ class GALGAS_semanticContext : public AC_GALGAS_root {
     mProperty_mSyntaxComponentMapForSemanticAnalysis = inValue ;
   }
 
-  public: inline void setter_setGalgas_34_ (const GALGAS_bool & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_galgas_34_ = inValue ;
-  }
-
 //--------------------------------- Virtual destructor (in debug mode)
   public: virtual ~ GALGAS_semanticContext (void) ;
 
@@ -2741,8 +2732,7 @@ class GALGAS_semanticContext : public AC_GALGAS_root {
                                   const GALGAS_grammarMap & in_mGrammarMap,
                                   const GALGAS_optionComponentMapForSemanticAnalysis & in_mOptionComponentMapForSemanticAnalysis,
                                   const GALGAS_lexiqueComponentMapForSemanticAnalysis & in_mLexiqueComponentMapForSemanticAnalysis,
-                                  const GALGAS_syntaxComponentMap & in_mSyntaxComponentMapForSemanticAnalysis,
-                                  const GALGAS_bool & in_galgas_34_) ;
+                                  const GALGAS_syntaxComponentMap & in_mSyntaxComponentMapForSemanticAnalysis) ;
 
 //-- Start of type generic part
 
@@ -2755,8 +2745,7 @@ class GALGAS_semanticContext : public AC_GALGAS_root {
                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS class functions
-  public: static class GALGAS_semanticContext class_func_new (const class GALGAS_bool & inOperand0,
-                                                              class Compiler * inCompiler
+  public: static class GALGAS_semanticContext class_func_new (Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'

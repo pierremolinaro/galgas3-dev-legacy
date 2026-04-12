@@ -98,9 +98,6 @@ option galgas_cli_options {
   @bool errorOldStyleCollectionInitializer : '\0', "error-old-syle-collection-initializer"
     -> "Error on old style collection initializer"
 
-  @bool warningNotGalgas4Feature : '\0', "warns-on-feature-not-handled-in-galgas4"
-    -> "Warns on feature not handled in galgas 4"
-
   @bool errorObsoleteGetterCall : '\0', "error-on-obsolete-getter-call"
     -> "Error on call of an obsolete getter"
 }

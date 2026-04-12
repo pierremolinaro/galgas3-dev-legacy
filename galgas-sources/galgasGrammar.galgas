@@ -38,10 +38,3 @@ indexing grammar galgas3Grammar "SLR" {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-
-#indexing grammar galgas4Grammar "SLR" {
-#
-#   <start_symbol> ?!@galgasDeclarationAST ioDeclarations
-#}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————

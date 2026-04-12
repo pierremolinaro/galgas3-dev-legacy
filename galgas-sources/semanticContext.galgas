@@ -213,7 +213,6 @@ struct @semanticContext {
   public var @optionComponentMapForSemanticAnalysis mOptionComponentMapForSemanticAnalysis %selector = {}
   public var @lexiqueComponentMapForSemanticAnalysis mLexiqueComponentMapForSemanticAnalysis %selector = {}
   public var @syntaxComponentMap mSyntaxComponentMapForSemanticAnalysis %selector = {}
-  public var @bool galgas4 %selector
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

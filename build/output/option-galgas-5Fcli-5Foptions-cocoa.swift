@@ -177,14 +177,6 @@ func enterOptions (_ ioBoolOptionArray : inout [SWIFT_CommandLineOption],
     comment: "Run bit integers checks",
     defaultValue: ""
   ))
-  ioBoolOptionArray.append (SWIFT_CommandLineOption (
-    domainName: "galgas_cli_options",
-    identifier: "warningNotGalgas4Feature",
-    commandChar: "",
-    commandString: "warns-on-feature-not-handled-in-galgas4",
-    comment: "Warns on feature not handled in galgas 4",
-    defaultValue: ""
-  ))
   ioUIntOptionArray.append (SWIFT_CommandLineOption (
     domainName: "galgas_cli_options",
     identifier: "macosxSDK",

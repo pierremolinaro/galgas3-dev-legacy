@@ -9,20 +9,6 @@
 
 //--------------------------------------------------------------------------------------------------
 //
-//Overriding extension method '@xorExpressionAST enterExpressionInSemanticContext'
-//
-//--------------------------------------------------------------------------------------------------
-
-void cPtr_xorExpressionAST::method_enterExpressionInSemanticContext (GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
-                                                                     Compiler * inCompiler
-                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  const GALGAS_xorExpressionAST temp_0 = this ;
-  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_0.readProperty_mLeftExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 227)) ;
-  const GALGAS_xorExpressionAST temp_1 = this ;
-  callExtensionMethod_enterExpressionInSemanticContext ((cPtr_semanticExpressionAST *) temp_1.readProperty_mRightExpression ().ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 228)) ;
-}
-//--------------------------------------------------------------------------------------------------
-//
 //Overriding extension method '@xorExpressionAST analyzeSemanticExpression'
 //
 //--------------------------------------------------------------------------------------------------
@@ -7496,4 +7482,56 @@ void cPtr_nonterminalCallInstruction::method_transformInstruction (GALGAS_termin
   const GALGAS_nonterminalCallInstruction temp_1 = this ;
   const GALGAS_nonterminalCallInstruction temp_2 = this ;
   ioArgument_ioSyntaxInstructionList.addAssign_operation (GALGAS_nonTerminalInstructionForGrammarAnalysis::class_func_new (temp_1.readProperty_mInstructionLocation (), temp_2.readProperty_mNonterminalName (), var_nonTerminalSymbolIndex_3810  COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 77))  COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 77)) ;
+}
+//--------------------------------------------------------------------------------------------------
+//
+//Overriding extension method '@nonterminalCallInstruction analyzeSyntaxInstruction'
+//
+//--------------------------------------------------------------------------------------------------
+
+void cPtr_nonterminalCallInstruction::method_analyzeSyntaxInstruction (const GALGAS_lstring constinArgument_inUsefulnessCallerEntityName,
+                                                                       GALGAS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
+                                                                       const GALGAS_analysisContext constinArgument_inAnalysisContext,
+                                                                       GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                                                       const GALGAS_bool constinArgument_inHasTranslateFeature,
+                                                                       const GALGAS_terminalMap /* constinArgument_inTerminalMap */,
+                                                                       const GALGAS_string /* constinArgument_inLexiqueName */,
+                                                                       const GALGAS_nonterminalMap constinArgument_inNonterminalMap,
+                                                                       const GALGAS_string /* constinArgument_inComponentName */,
+                                                                       const GALGAS_stringset /* constinArgument_inIndexNameSet */,
+                                                                       GALGAS_semanticInstructionListForGeneration & ioArgument_ioInstructionListForGeneration,
+                                                                       GALGAS_localVarManager & ioArgument_ioVariableMap,
+                                                                       GALGAS_uint & /* ioArgument_ioSelectMethodCount */,
+                                                                       Compiler * inCompiler
+                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_nonterminalLabelMap var_labelMap_5284 ;
+  const GALGAS_nonterminalCallInstruction temp_0 = this ;
+  constinArgument_inNonterminalMap.method_searchKey (temp_0.readProperty_mNonterminalName (), var_labelMap_5284, inCompiler COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 99)) ;
+  GALGAS_formalParameterSignature var_signature_5328 ;
+  enumGalgasBool test_1 = kBoolTrue ;
+  if (kBoolTrue == test_1) {
+    const GALGAS_nonterminalCallInstruction temp_2 = this ;
+    test_1 = GALGAS_bool (kIsEqual, temp_2.readProperty_mLabelName ().readProperty_string ().objectCompare (GALGAS_string ("parse"))).boolEnum () ;
+    if (kBoolTrue == test_1) {
+      var_signature_5328 = GALGAS_formalParameterSignature::class_func_emptyList (SOURCE_FILE ("instruction-non-terminal.galgas", 102)) ;
+    }
+  }
+  if (kBoolFalse == test_1) {
+    const GALGAS_nonterminalCallInstruction temp_3 = this ;
+    GALGAS_formalParameterListForGeneration joker_5457 ; // Joker input parameter
+    GALGAS_location joker_5471 ; // Joker input parameter
+    var_labelMap_5284.method_searchKey (temp_3.readProperty_mLabelName (), joker_5457, var_signature_5328, joker_5471, inCompiler COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 104)) ;
+  }
+  GALGAS_actualParameterListForGeneration var_actualParameterListForGeneration_5924 ;
+  const GALGAS_nonterminalCallInstruction temp_4 = this ;
+  const GALGAS_nonterminalCallInstruction temp_5 = this ;
+  const GALGAS_nonterminalCallInstruction temp_6 = this ;
+  extensionMethod_analyzeRoutineArguments (temp_4.readProperty_mActualParameterList (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioTypeMap, temp_5.readProperty_mNonterminalName (), GALGAS_string ("'<").add_operation (temp_6.readProperty_mNonterminalName ().readProperty_string (), inCompiler COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 113)).add_operation (GALGAS_string (">' nonterminal declaration"), inCompiler COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 113)), var_signature_5328, ioArgument_ioVariableMap, ioArgument_ioInstructionListForGeneration, var_actualParameterListForGeneration_5924, inCompiler COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 107)) ;
+  const GALGAS_nonterminalCallInstruction temp_7 = this ;
+  callExtensionMethod_analyzeSDT ((cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult *) temp_7.readProperty_mGrammarInstructionSyntaxDirectedTranslationResult ().ptr (), constinArgument_inAnalysisContext, ioArgument_ioTypeMap, constinArgument_inHasTranslateFeature, ioArgument_ioVariableMap, inCompiler COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 120)) ;
+  const GALGAS_nonterminalCallInstruction temp_8 = this ;
+  const GALGAS_nonterminalCallInstruction temp_9 = this ;
+  const GALGAS_nonterminalCallInstruction temp_10 = this ;
+  const GALGAS_nonterminalCallInstruction temp_11 = this ;
+  ioArgument_ioInstructionListForGeneration.addAssign_operation (GALGAS_nonterminalInstructionForGeneration::class_func_new (temp_8.readProperty_mInstructionLocation (), temp_9.readProperty_mNonterminalName ().readProperty_string (), temp_10.readProperty_mLabelName ().readProperty_string (), var_actualParameterListForGeneration_5924, temp_11.readProperty_mGrammarInstructionSyntaxDirectedTranslationResult ()  COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 127))  COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 127)) ;
 }

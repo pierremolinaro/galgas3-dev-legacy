@@ -540,8 +540,6 @@ extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_printPredefinedL
 
 extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_check_5F_big_5F_int ;
 
-extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_warningNotGalgas_34_Feature ;
-
 //--------------------------------------------------------------------------------------------------
 //
 //                               UInt options                                                    

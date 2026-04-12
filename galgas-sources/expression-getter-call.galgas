@@ -137,18 +137,10 @@ refclass @getterCallExpressionAST : @semanticExpressionAST {
           !constructorEffectiveParameterList
           !hasCompilerArgument
         }
-        if inAnalysisContext.mSemanticContext.galgas4
-         && ([self.mActualArgumentList count] == 0)
-         && [option galgas_cli_options.errorOnGetterCallWithNoArgument value] then
-          error self.mExpressionLocation : "getter with no argument, remove parenthesis" fixit { remove }
-        end
       end
   #--------------------------------------- The getter does not exist, it is a property ?
     elsif [self.mActualArgumentList count] == 0, let [[receiverType definition].mPropertyMap searchKey !self.mGetterName.string ?let accessControl ?* ?let propertyType] then
       [accessControl checkGetAccess !inAnalysisContext.selfType !self.mGetterName]
-  #    if not isPublic then
-  #      error self.mGetterName : " inaccessible property (due to its 'private' qualifier)"
-  #    end
       outExpression = @structPropertyAccessExpressionForGeneration.new {
         !propertyType
         !self.mGetterName.location

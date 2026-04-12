@@ -86,35 +86,9 @@ message "a GALGAS 3 source file"
     error inSourceFile : s
   else
     let projectFilePath = parentDirectory + "/" + [candidateProjectFiles mValueAtIndex !0]
-    parseAndAnalyzeProject (!.new {!projectFilePath !inSourceFile.location} !galgas4: false !inSourceFile.string )
+    parseAndAnalyzeProject (!.new {!projectFilePath !inSourceFile.location} !inSourceFile.string )
   end
 }
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#          ggs
-#
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-#case . "ggs"
-#message "a GALGAS 4 source file"
-#%useGrammar galgas4Grammar ?sourceFilePath: @lstring inSourceFile {
-##--- Search for a project file in parent directory
-#  let parentDirectory = [[inSourceFile.string stringByDeletingLastPathComponent] stringByDeletingLastPathComponent]
-#  let candidateProjectFiles = [parentDirectory regularFilesWithExtensions !false !{!"ggsProject"}]
-#  if [candidateProjectFiles count] == 0 then
-#    error inSourceFile : "no project file in parent directory of source file"
-#  elsif [candidateProjectFiles count] > 1 then
-#    var s = "several project files in source file parent directory:"
-#    for (mValue) in candidateProjectFiles do
-#      s += "\n  - " + mValue
-#    end
-#    error inSourceFile : s
-#  else
-#    let projectFilePath = parentDirectory + "/" + [candidateProjectFiles mValueAtIndex !0]
-#    parseAndAnalyzeProject (!.new {!projectFilePath !inSourceFile.location} !galgas4: true !inSourceFile.string )
-#  end
-#}
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 #
@@ -139,16 +113,7 @@ case . "galgasProject"
 message "a GALGAS project source file"
 %useGrammar galgas3ProjectGrammar
 ?sourceFilePath:@lstring inProjectSourceFile {
-  parseAndAnalyzeProject (!inProjectSourceFile !galgas4: false !"" )
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
-case . "ggsproject"
-message "a GALGAS project source file"
-%useGrammar galgas3ProjectGrammar
-?sourceFilePath: @lstring inProjectSourceFile {
-  parseAndAnalyzeProject (!inProjectSourceFile !galgas4: true !"" )
+  parseAndAnalyzeProject (!inProjectSourceFile !"" )
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
@@ -158,14 +123,13 @@ message "a GALGAS project source file"
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc parseAndAnalyzeProject ?let @lstring inProjectSourceFile
-                                    ?galgas4: let @bool inGalgas4
                                     ?let @string inSourceToAnalyze {
   if @application.verboseOutput then
     println (!"*** Parsing project files")
   end
   grammar galgas3ProjectGrammar (?let @galgas3ProjectComponentAST projectComponentAST) in inProjectSourceFile
   if [option.mode value] == "" then
-    compileProject (!inProjectSourceFile !inSourceToAnalyze !galgas4: inGalgas4 !projectComponentAST)
+    compileProject (!inProjectSourceFile !inSourceToAnalyze !projectComponentAST)
   #--- C++ compilation
     if 0 == @uint.errorCount then
       let cppCompilationTarget = [option galgas_cli_options.cppCompile value]
@@ -192,7 +156,6 @@ private proc parseAndAnalyzeProject ?let @lstring inProjectSourceFile
 
 private proc compileProject ?let @lstring inProjectSourceFile
                             ?let @string inSourceToAnalyze
-                            ?galgas4: let @bool inGalgas4
                             ?let @galgas3ProjectComponentAST inProjectComponentAST {
   var @galgasDeclarationAST declarationAST = .new
 //--- Parse predefined type definitions
@@ -292,12 +255,7 @@ private proc compileProject ?let @lstring inProjectSourceFile
   )
 #---------------------------------- Compile semantic declarations
   var @usefulEntitiesGraph usefulEntitiesGraph = .emptyGraph
-  let @string buildDirectoryName
-  if inGalgas4 then
-    buildDirectoryName = [[inProjectSourceFile lastPathComponent] stringByReplacingStringByString !"." !"-"] + "-build"
-  else
-    buildDirectoryName = "build"
-  end
+  let @string buildDirectoryName = "build"
   let absoluteBuildDirectory = [inProjectSourceFile stringByDeletingLastPathComponent] + "/" + buildDirectoryName
   let productDirectory = absoluteBuildDirectory + "/output"
   let @stringlist appProductFileList = {}
@@ -309,7 +267,6 @@ private proc compileProject ?let @lstring inProjectSourceFile
     compileSemanticDeclarationsGalgas (
       !?usefulnessRootEntities
       !?usefulEntitiesGraph
-      !galgas4: inGalgas4
       !productDirectory
       !inProjectComponentAST.mEndOfSourceFile
       !declarationAST.mDeclarationList
@@ -319,7 +276,7 @@ private proc compileProject ?let @lstring inProjectSourceFile
     )
   else
     semanticDeclarationSortedListForGeneration = {}
-    semanticContext = @semanticContext.new {!galgas4: inGalgas4}
+    semanticContext = @semanticContext.new {}
     typeMap = {}
   end
 #---------------------------------- Compile GUI components

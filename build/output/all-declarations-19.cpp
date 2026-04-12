@@ -8292,8 +8292,7 @@ mProperty_mFilewrapperMap (),
 mProperty_mGrammarMap (),
 mProperty_mOptionComponentMapForSemanticAnalysis (),
 mProperty_mLexiqueComponentMapForSemanticAnalysis (),
-mProperty_mSyntaxComponentMapForSemanticAnalysis (),
-mProperty_galgas_34_ () {
+mProperty_mSyntaxComponentMapForSemanticAnalysis () {
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8309,22 +8308,19 @@ GALGAS_semanticContext::GALGAS_semanticContext (const GALGAS_routineMap & inOper
                                                 const GALGAS_grammarMap & inOperand3,
                                                 const GALGAS_optionComponentMapForSemanticAnalysis & inOperand4,
                                                 const GALGAS_lexiqueComponentMapForSemanticAnalysis & inOperand5,
-                                                const GALGAS_syntaxComponentMap & inOperand6,
-                                                const GALGAS_bool & inOperand7) :
+                                                const GALGAS_syntaxComponentMap & inOperand6) :
 mProperty_mRoutineMap (inOperand0),
 mProperty_mFunctionMap (inOperand1),
 mProperty_mFilewrapperMap (inOperand2),
 mProperty_mGrammarMap (inOperand3),
 mProperty_mOptionComponentMapForSemanticAnalysis (inOperand4),
 mProperty_mLexiqueComponentMapForSemanticAnalysis (inOperand5),
-mProperty_mSyntaxComponentMapForSemanticAnalysis (inOperand6),
-mProperty_galgas_34_ (inOperand7) {
+mProperty_mSyntaxComponentMapForSemanticAnalysis (inOperand6) {
 }
 
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_semanticContext GALGAS_semanticContext::class_func_new (const GALGAS_bool & in_galgas4,
-                                                               Compiler * inCompiler
+GALGAS_semanticContext GALGAS_semanticContext::class_func_new (Compiler * inCompiler
                                                                COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_routineMap in_mRoutineMap = GALGAS_routineMap::class_func_new (inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 209)) ;
   const GALGAS_functionMap in_mFunctionMap = GALGAS_functionMap::class_func_emptyMap (SOURCE_FILE ("semanticContext.galgas", 210)) ;
@@ -8334,8 +8330,8 @@ GALGAS_semanticContext GALGAS_semanticContext::class_func_new (const GALGAS_bool
   const GALGAS_lexiqueComponentMapForSemanticAnalysis in_mLexiqueComponentMapForSemanticAnalysis = GALGAS_lexiqueComponentMapForSemanticAnalysis::class_func_emptyMap (SOURCE_FILE ("semanticContext.galgas", 214)) ;
   const GALGAS_syntaxComponentMap in_mSyntaxComponentMapForSemanticAnalysis = GALGAS_syntaxComponentMap::class_func_emptyMap (SOURCE_FILE ("semanticContext.galgas", 215)) ;
   GALGAS_semanticContext result ;
-  if (in_mRoutineMap.isValid () && in_mFunctionMap.isValid () && in_mFilewrapperMap.isValid () && in_mGrammarMap.isValid () && in_mOptionComponentMapForSemanticAnalysis.isValid () && in_mLexiqueComponentMapForSemanticAnalysis.isValid () && in_mSyntaxComponentMapForSemanticAnalysis.isValid () && in_galgas4.isValid ()) {
-    result = GALGAS_semanticContext (in_mRoutineMap, in_mFunctionMap, in_mFilewrapperMap, in_mGrammarMap, in_mOptionComponentMapForSemanticAnalysis, in_mLexiqueComponentMapForSemanticAnalysis, in_mSyntaxComponentMapForSemanticAnalysis, in_galgas4) ;
+  if (in_mRoutineMap.isValid () && in_mFunctionMap.isValid () && in_mFilewrapperMap.isValid () && in_mGrammarMap.isValid () && in_mOptionComponentMapForSemanticAnalysis.isValid () && in_mLexiqueComponentMapForSemanticAnalysis.isValid () && in_mSyntaxComponentMapForSemanticAnalysis.isValid ()) {
+    result = GALGAS_semanticContext (in_mRoutineMap, in_mFunctionMap, in_mFilewrapperMap, in_mGrammarMap, in_mOptionComponentMapForSemanticAnalysis, in_mLexiqueComponentMapForSemanticAnalysis, in_mSyntaxComponentMapForSemanticAnalysis) ;
   }
   return result ;
 }
@@ -8365,16 +8361,13 @@ typeComparisonResult GALGAS_semanticContext::objectCompare (const GALGAS_semanti
   if (result == kOperandEqual) {
     result = mProperty_mSyntaxComponentMapForSemanticAnalysis.objectCompare (inOperand.mProperty_mSyntaxComponentMapForSemanticAnalysis) ;
   }
-  if (result == kOperandEqual) {
-    result = mProperty_galgas_34_.objectCompare (inOperand.mProperty_galgas_34_) ;
-  }
   return result ;
 }
 
 //--------------------------------------------------------------------------------------------------
 
 bool GALGAS_semanticContext::isValid (void) const {
-  return mProperty_mRoutineMap.isValid () && mProperty_mFunctionMap.isValid () && mProperty_mFilewrapperMap.isValid () && mProperty_mGrammarMap.isValid () && mProperty_mOptionComponentMapForSemanticAnalysis.isValid () && mProperty_mLexiqueComponentMapForSemanticAnalysis.isValid () && mProperty_mSyntaxComponentMapForSemanticAnalysis.isValid () && mProperty_galgas_34_.isValid () ;
+  return mProperty_mRoutineMap.isValid () && mProperty_mFunctionMap.isValid () && mProperty_mFilewrapperMap.isValid () && mProperty_mGrammarMap.isValid () && mProperty_mOptionComponentMapForSemanticAnalysis.isValid () && mProperty_mLexiqueComponentMapForSemanticAnalysis.isValid () && mProperty_mSyntaxComponentMapForSemanticAnalysis.isValid () ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8387,7 +8380,6 @@ void GALGAS_semanticContext::drop (void) {
   mProperty_mOptionComponentMapForSemanticAnalysis.drop () ;
   mProperty_mLexiqueComponentMapForSemanticAnalysis.drop () ;
   mProperty_mSyntaxComponentMapForSemanticAnalysis.drop () ;
-  mProperty_galgas_34_.drop () ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -8411,8 +8403,6 @@ void GALGAS_semanticContext::description (String & ioString,
     mProperty_mLexiqueComponentMapForSemanticAnalysis.description (ioString, inIndentation+1) ;
     ioString.appendCString (", ") ;
     mProperty_mSyntaxComponentMapForSemanticAnalysis.description (ioString, inIndentation+1) ;
-    ioString.appendCString (", ") ;
-    mProperty_galgas_34_.description (ioString, inIndentation+1) ;
   }
   ioString.appendCString (">") ;
 }
@@ -9664,12 +9654,6 @@ C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_check_5F_big_5F_int ("g
                                          0,
                                          "check-big-int",
                                          "Run bit integers checks") ;
-
-C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_warningNotGalgas_34_Feature ("galgas_cli_options",
-                                         "warningNotGalgas4Feature",
-                                         0,
-                                         "warns-on-feature-not-handled-in-galgas4",
-                                         "Warns on feature not handled in galgas 4") ;
 
 //--------------------------------------------------------------------------------------------------
 //

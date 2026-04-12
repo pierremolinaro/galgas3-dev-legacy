@@ -20,18 +20,17 @@ void routine_updateLIBPMatPath_3F_ (const class GALGAS_string constinArgument0,
 
 //--------------------------------------------------------------------------------------------------
 //
-//Routine 'buildGalgasSemanticContext???galgas4!!!'
+//Routine 'buildGalgasSemanticContext??!!!'
 //
 //--------------------------------------------------------------------------------------------------
 
-void routine_buildGalgasSemanticContext_3F__3F__3F_galgas_34__21__21__21_ (const class GALGAS_semanticDeclarationListAST constinArgument0,
-                                                                           const class GALGAS_location constinArgument1,
-                                                                           const class GALGAS_bool constinArgument2,
-                                                                           class GALGAS_semanticContext & outArgument3,
-                                                                           class GALGAS_unifiedTypeMap & outArgument4,
-                                                                           class GALGAS_semanticDeclarationListAST & outArgument5,
-                                                                           class Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) ;
+void routine_buildGalgasSemanticContext_3F__3F__21__21__21_ (const class GALGAS_semanticDeclarationListAST constinArgument0,
+                                                             const class GALGAS_location constinArgument1,
+                                                             class GALGAS_semanticContext & outArgument2,
+                                                             class GALGAS_unifiedTypeMap & outArgument3,
+                                                             class GALGAS_semanticDeclarationListAST & outArgument4,
+                                                             class Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
