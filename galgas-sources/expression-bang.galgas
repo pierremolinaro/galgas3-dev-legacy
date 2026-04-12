@@ -46,26 +46,6 @@ syntax extension galgas3ExpressionSyntax {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-
-syntax extension galgas4ExpressionSyntax {
-
-  #·······························································································
-
-  rule <primary> ?!@galgasDeclarationAST ioDeclarations
-                 !@semanticExpressionAST outExpression {
-    let operatorLocation = @location.here
-    <primary> !?ioDeclarations ?outExpression
-#    $°$
-    $.$
-    $bang$
-    outExpression = @bangExpressionAST.new {!operatorLocation !outExpression}
-  }
-
-  #·······························································································
-
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 

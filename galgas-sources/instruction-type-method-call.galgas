@@ -54,31 +54,6 @@ syntax extension galgas3InstructionsSyntax {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-
-syntax extension galgas4InstructionsSyntax {
-
-  #·······························································································
-
-  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
-                              !@semanticInstructionAST outInstruction {
-    let instructionLocation = @location.here
-    $@type$ ?let @lstring mTypeName indexing typeReferenceInTypeMethod
-    $.$
-    $identifier$ ?let @lstring mMethodName
-    <actual_parameter_list_within_parenthesis> !?ioDeclarations ?let @actualParameterListAST actualParameterList
-    outInstruction = @typeMethodCallInstructionAST.new {
-      !instructionLocation
-      !mTypeName
-      !mMethodName
-      !actualParameterList
-    }
-  }
-
-  #·······························································································
-
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! CONTEXT
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 

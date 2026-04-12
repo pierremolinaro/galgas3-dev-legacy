@@ -49,25 +49,6 @@ syntax extension galgas3ExpressionSyntax {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-
-syntax extension galgas4ExpressionSyntax {
-
-  #·······························································································
-
-  rule <primary> ?!@galgasDeclarationAST ioDeclarations
-                 !@semanticExpressionAST outExpression {
-    $identifier$ ?let @lstring functionName indexing functionCall
-    $($
-    <output_expression_list> !?ioDeclarations ?let @actualOutputExpressionList expressionList
-    $)$
-    outExpression = @functionCallExpressionAST.new {!functionName !expressionList}
-  }
-
-  #·······························································································
-
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 

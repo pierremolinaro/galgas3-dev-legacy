@@ -39,19 +39,9 @@ indexing grammar galgas3Grammar "SLR" {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-indexing grammar galgas4Grammar "SLR" {
-  syntax galgas4ExpressionSyntax
-  syntax galgas4ParameterArgumentSyntax
-  syntax galgas4InstructionsSyntax
-  syntax galgas4DeclarationsSyntax
-  syntax galgas4LexiqueComponentSyntax
-  syntax galgas4OptionComponentSyntax
-  syntax galgas4GuiComponentSyntax
-  syntax galgas4SyntaxComponentSyntax
-  syntax galgas4GrammarComponentSyntax
-  syntax galgas4ProgramDeclarations
-
-   <start_symbol> ?!@galgasDeclarationAST ioDeclarations
-}
+#indexing grammar galgas4Grammar "SLR" {
+#
+#   <start_symbol> ?!@galgasDeclarationAST ioDeclarations
+#}
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————

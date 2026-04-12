@@ -45,24 +45,6 @@ syntax extension galgas3ExpressionSyntax {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-
-syntax extension galgas4ExpressionSyntax {
-
-  #·······························································································
-
-  rule <factor> ?!@galgasDeclarationAST ioDeclarations
-                !@semanticExpressionAST outExpression {
-    let operatorLocation = @location.here
-    $not$
-    <factor> !?ioDeclarations ?outExpression
-    outExpression = @notExpressionAST.new {!operatorLocation !outExpression}
-  }
-
-  #·······························································································
-
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 

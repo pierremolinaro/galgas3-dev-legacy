@@ -7,7 +7,6 @@
 #import "F_CocoaWrapperForGalgas.h"
 #import "OC_GGS_CommandLineOption.h"
 #import "lexique-galgas+scanner3-cocoa.h"
-#import "lexique-galgas+scanner4-cocoa.h"
 #import "lexique-galgas+template+scanner-cocoa.h"
 #import "GGSUpdateCocoaGalgas.h"
 
@@ -453,97 +452,13 @@ static const UInt16 * gPopUpData_0_galgasScanner_33_ [34] = {
 
 //--------------------------------------------------------------------------------------------------
 
-#pragma mark Lexique galgasScanner4
-
-//--------------------------------------------------------------------------------------------------
-//                     P O P    U P    L I S T    D A T A
-//--------------------------------------------------------------------------------------------------
-
-static const UInt16 * gPopUpData_1_galgasScanner_34_ [1] = {
-  NULL
-} ;
-
-//--------------------------------------------------------------------------------------------------
-//                            Lexique interface
-//--------------------------------------------------------------------------------------------------
-
-@interface OC_Tokenizer_1_galgasScanner4 : OC_Lexique_galgasScanner4 {
-
-}
-
-- (NSString *) blockComment ;
-
-- (const UInt16 * *) popupListData ;
-
-- (NSUInteger) textMacroCount ;
-
-- (NSString *) textMacroTitleAtIndex: (const UInt32) inIndex ;
-
-- (NSString *) textMacroContentAtIndex: (const UInt32) inIndex ;
-
-- (NSString *) tabItemTitle ;
-
-@end
-
-//--------------------------------------------------------------------------------------------------
-
-@implementation OC_Tokenizer_1_galgasScanner4
-
-//--------------------------------------------------------------------------------------------------
-
-- (NSString *) blockComment {
-  return @"//" ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-- (const UInt16 * *) popupListData {
-  return gPopUpData_1_galgasScanner_34_ ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-- (NSUInteger) textMacroCount {
-  return 0 ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-- (NSString *) tabItemTitle {
-  return @"Source GALGAS 4" ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-- (NSString *) textMacroTitleAtIndex: (const UInt32) inIndex {
-  static NSString * kTextMacroTitle [1] = {
-    NULL
-  } ;
-  return kTextMacroTitle [inIndex] ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-- (NSString *) textMacroContentAtIndex: (const UInt32) inIndex {
-  static NSString * kTextMacroContent [1] = {
-    NULL
-  } ;
-  return kTextMacroContent [inIndex] ;
-}
-
-//--------------------------------------------------------------------------------------------------
-
-@end
-
-//--------------------------------------------------------------------------------------------------
-
 #pragma mark Lexique galgasTemplateScanner
 
 //--------------------------------------------------------------------------------------------------
 //                     P O P    U P    L I S T    D A T A
 //--------------------------------------------------------------------------------------------------
 
-static const UInt16 * gPopUpData_2_galgasTemplateScanner [1] = {
+static const UInt16 * gPopUpData_1_galgasTemplateScanner [1] = {
   NULL
 } ;
 
@@ -551,7 +466,7 @@ static const UInt16 * gPopUpData_2_galgasTemplateScanner [1] = {
 //                            Lexique interface
 //--------------------------------------------------------------------------------------------------
 
-@interface OC_Tokenizer_2_galgasTemplateScanner : OC_Lexique_galgasTemplateScanner {
+@interface OC_Tokenizer_1_galgasTemplateScanner : OC_Lexique_galgasTemplateScanner {
 
 }
 
@@ -571,7 +486,7 @@ static const UInt16 * gPopUpData_2_galgasTemplateScanner [1] = {
 
 //--------------------------------------------------------------------------------------------------
 
-@implementation OC_Tokenizer_2_galgasTemplateScanner
+@implementation OC_Tokenizer_1_galgasTemplateScanner
 
 //--------------------------------------------------------------------------------------------------
 
@@ -582,7 +497,7 @@ static const UInt16 * gPopUpData_2_galgasTemplateScanner [1] = {
 //--------------------------------------------------------------------------------------------------
 
 - (const UInt16 * *) popupListData {
-  return gPopUpData_2_galgasTemplateScanner ;
+  return gPopUpData_1_galgasTemplateScanner ;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -630,13 +545,9 @@ OC_Lexique * tokenizerForExtension (const NSString * inExtension) {
   }else if ([inExtension isEqualToString:@"galgasProject"]) {
     result = [OC_Tokenizer_0_galgasScanner3 new] ;
   }else if ([inExtension isEqualToString:@"galgasTemplate"]) {
-    result = [OC_Tokenizer_2_galgasTemplateScanner new] ;
-  }else if ([inExtension isEqualToString:@"ggs"]) {
-    result = [OC_Tokenizer_1_galgasScanner4 new] ;
+    result = [OC_Tokenizer_1_galgasTemplateScanner new] ;
   }else if ([inExtension isEqualToString:@"ggsTemplate"]) {
-    result = [OC_Tokenizer_2_galgasTemplateScanner new] ;
-  }else if ([inExtension isEqualToString:@"ggsproject"]) {
-    result = [OC_Tokenizer_1_galgasScanner4 new] ;
+    result = [OC_Tokenizer_1_galgasTemplateScanner new] ;
   }
   return result ;
 }
@@ -646,8 +557,7 @@ OC_Lexique * tokenizerForExtension (const NSString * inExtension) {
 NSArray * tokenizers (void) {
   return [NSArray arrayWithObjects:
     [OC_Tokenizer_0_galgasScanner3 new],
-    [OC_Tokenizer_1_galgasScanner4 new],
-    [OC_Tokenizer_2_galgasTemplateScanner new],
+    [OC_Tokenizer_1_galgasTemplateScanner new],
     nil
   ] ;
 }

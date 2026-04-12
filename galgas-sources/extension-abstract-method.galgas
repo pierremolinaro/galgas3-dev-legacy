@@ -67,47 +67,6 @@ syntax extension galgas3DeclarationsSyntax {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-
-syntax extension galgas4DeclarationsSyntax {
-
-  #·······························································································
-
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
-    $abstract$
-    $proc$
-    $@type$ ?let @lstring className indexing typeReferenceAbstractExtensionMethod
-    $.$
-    $identifier$ ?let @lstring mMethodName indexing abstractExtensionMethodDefinition
-    <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
-    ioDeclarations.mDeclarationList += !@abstractExtensionMethodAST.new {
-      !isPredefined: false # Is not predefined
-      !className
-      !mMethodName
-      !formalParameterList
-    }
-  }
-
-  #·······························································································
-
-  rule <method_declaration> ?let @lstring inClassName
-                            ?!@galgasDeclarationAST ioDeclarations {
-    $abstract$
-    $proc$
-    $identifier$ ?let @lstring mMethodName indexing abstractExtensionMethodDefinition
-    <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
-    ioDeclarations.mDeclarationList += !@abstractExtensionMethodAST.new {
-      !isPredefined: false # Is not predefined
-      !inClassName
-      !mMethodName
-      !formalParameterList
-    }
-  }
-
-  #·······························································································
-
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
 #   ENTER IN GRAPH
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 

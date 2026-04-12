@@ -78,64 +78,6 @@ syntax extension galgas3DeclarationsSyntax {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-syntax extension galgas4DeclarationsSyntax {
-
-  #·······························································································
-
-  rule <acces_control> !@AccessControlAST outAccessControl {
-    select
-      outAccessControl = .publicAccess
-    or
-      $public$
-      outAccessControl = .publicAccess
-    or
-      $protected$
-      select
-        outAccessControl = .protectedAccess
-      or
-        $($
-        $identifier$ ?let value
-        if value.string != "set" then
-          error value.location : "only 'set' is allowed here"
-        end
-        $)$
-        outAccessControl = .protectedSetAccess
-      end
-    or
-      $private$
-      select
-        outAccessControl = .privateAccess
-      or
-        $($
-        $identifier$ ?let value
-        if value.string != "set" then
-          error value.location : "only 'set' is allowed here"
-        end
-        $)$
-        outAccessControl = .privateSetAccess
-      end
-    or
-      $fileprivate$
-      select
-        outAccessControl = .fileprivateSetAccess {!declarationLocation: .here}
-      or
-        $($
-        $identifier$ ?let value
-        outAccessControl = .fileprivateSetAccess {!declarationLocation: .here}
-        if value.string != "set" then
-          error value.location : "only 'set' is allowed here"
-        end
-        $)$
-      end
-    end
-  }
-
-  #·······························································································
-
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
 enum @AccessControlAST {
   case publicAccess
   case protectedAccess

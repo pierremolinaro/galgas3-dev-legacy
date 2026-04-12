@@ -56,35 +56,6 @@ syntax extension galgas3DeclarationsSyntax {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-
-syntax extension galgas4DeclarationsSyntax {
-
-  #·······························································································
-
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
-    $boolset$
-    $@type$ ?let @lstring boolsetTypeName indexing structDefinition
-    ${$
-    var @lstringlist slotList = {}
-    repeat
-      $identifier$ ?let slotName
-      slotList += !slotName
-    while
-      $,$
-    end
-    $}$
-    ioDeclarations.mDeclarationList += !@boolsetDeclarationAST.new {
-      !isPredefined: false # Is not predefined
-      !boolsetTypeName
-      !slotList
-    }
-  }
-
-  #·······························································································
-
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
 #   ENTER IN GRAPH
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 

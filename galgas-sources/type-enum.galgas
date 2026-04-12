@@ -79,51 +79,6 @@ syntax extension galgas3DeclarationsSyntax {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-
-syntax extension galgas4DeclarationsSyntax {
-
-  #·······························································································
-
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
-    $enum$
-    $@type$ ?let mEnumTypeName indexing enumDefinition
-    ${$
-    var @enumConstantList mConstantList = {}
-    repeat
-      $case$
-      $identifier$ ?let constantName
-      var @2lstringlist associatedValueTypeList = {}
-      select
-      or
-        $($
-        repeat
-          <type_definition> !?ioDeclarations ?let associatedValueType
-          $identifier$ ?let associatedValueName
-          associatedValueTypeList += !associatedValueType !associatedValueName
-        while
-        end
-        $)$
-      end
-      mConstantList += !constantName !associatedValueTypeList
-    while
-    end
-    repeat
-    while
-      <method_declaration> !mEnumTypeName !?ioDeclarations
-    end
-    $}$
-    ioDeclarations.mDeclarationList += !@enumDeclarationAST.new {
-      !isPredefined: false # Is not predefined
-      !mEnumTypeName
-      !mConstantList
-    }
-  }
-
-
-  #·······························································································
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
 #!  ENTER IN GRAPH
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 

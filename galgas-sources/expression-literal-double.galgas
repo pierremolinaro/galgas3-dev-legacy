@@ -42,22 +42,6 @@ syntax extension galgas3ExpressionSyntax {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-
-syntax extension galgas4ExpressionSyntax {
-
-  #·······························································································
-
-  rule <primary> ?!@galgasDeclarationAST unused ioDeclarations
-                 !@semanticExpressionAST outExpression {
-    $double.xxx$ ?let @ldouble literalDouble ?*
-    outExpression = @literalDoubleExpressionAST.new {!literalDouble}
-  }
-
-  #·······························································································
-
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 

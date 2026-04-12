@@ -10,545 +10,248 @@
 
 //--------------------------------------------------------------------------------------------------
 //
-// Phase 1: @XcodeProjectDescriptor struct
+//Filewrapper 'lexiqueGenerationTemplates'
 //
 //--------------------------------------------------------------------------------------------------
 
-class GALGAS_XcodeProjectDescriptor : public AC_GALGAS_root {
-//--------------------------------- Properties
-  public: GALGAS_uint mProperty_mSequenceNumber ;
-  public: inline GALGAS_uint readProperty_mSequenceNumber (void) const {
-    return mProperty_mSequenceNumber ;
-  }
 
-  public: GALGAS_string mProperty_mMainGroupReference ;
-  public: inline GALGAS_string readProperty_mMainGroupReference (void) const {
-    return mProperty_mMainGroupReference ;
-  }
-
-  public: GALGAS_stringlist mProperty_mMainGroupChildrenRefs ;
-  public: inline GALGAS_stringlist readProperty_mMainGroupChildrenRefs (void) const {
-    return mProperty_mMainGroupChildrenRefs ;
-  }
-
-  public: GALGAS_string mProperty_mProjectObjectReference ;
-  public: inline GALGAS_string readProperty_mProjectObjectReference (void) const {
-    return mProperty_mProjectObjectReference ;
-  }
-
-  public: GALGAS_XCodeGroupList mProperty_mGroupList ;
-  public: inline GALGAS_XCodeGroupList readProperty_mGroupList (void) const {
-    return mProperty_mGroupList ;
-  }
-
-  public: GALGAS_XCodeToolTargetList mProperty_mToolTargetList ;
-  public: inline GALGAS_XCodeToolTargetList readProperty_mToolTargetList (void) const {
-    return mProperty_mToolTargetList ;
-  }
-
-  public: GALGAS_XCodeAppTargetList mProperty_mAppTargetList ;
-  public: inline GALGAS_XCodeAppTargetList readProperty_mAppTargetList (void) const {
-    return mProperty_mAppTargetList ;
-  }
-
-  public: GALGAS__32_stringlist mProperty_mCFileList ;
-  public: inline GALGAS__32_stringlist readProperty_mCFileList (void) const {
-    return mProperty_mCFileList ;
-  }
-
-  public: GALGAS__32_stringlist mProperty_mCppFileList ;
-  public: inline GALGAS__32_stringlist readProperty_mCppFileList (void) const {
-    return mProperty_mCppFileList ;
-  }
-
-  public: GALGAS__32_stringlist mProperty_m_5F_M_5F_FileList ;
-  public: inline GALGAS__32_stringlist readProperty_m_5F_M_5F_FileList (void) const {
-    return mProperty_m_5F_M_5F_FileList ;
-  }
-
-  public: GALGAS__32_stringlist mProperty_m_5F_MM_5F_FileList ;
-  public: inline GALGAS__32_stringlist readProperty_m_5F_MM_5F_FileList (void) const {
-    return mProperty_m_5F_MM_5F_FileList ;
-  }
-
-  public: GALGAS__32_stringlist mProperty_mFrameworkFileList ;
-  public: inline GALGAS__32_stringlist readProperty_mFrameworkFileList (void) const {
-    return mProperty_mFrameworkFileList ;
-  }
-
-  public: GALGAS__32_stringlist mProperty_mHeaderFileList ;
-  public: inline GALGAS__32_stringlist readProperty_mHeaderFileList (void) const {
-    return mProperty_mHeaderFileList ;
-  }
-
-  public: GALGAS_BuildFileList mProperty_mBuildFileList ;
-  public: inline GALGAS_BuildFileList readProperty_mBuildFileList (void) const {
-    return mProperty_mBuildFileList ;
-  }
-
-  public: GALGAS_string mProperty_mDefaultConfigurationRef ;
-  public: inline GALGAS_string readProperty_mDefaultConfigurationRef (void) const {
-    return mProperty_mDefaultConfigurationRef ;
-  }
-
-  public: GALGAS_stringlist mProperty_mDefaultConfigurationSettingList ;
-  public: inline GALGAS_stringlist readProperty_mDefaultConfigurationSettingList (void) const {
-    return mProperty_mDefaultConfigurationSettingList ;
-  }
-
-  public: GALGAS_string mProperty_mProjectBuildConfigurationRef ;
-  public: inline GALGAS_string readProperty_mProjectBuildConfigurationRef (void) const {
-    return mProperty_mProjectBuildConfigurationRef ;
-  }
-
-  public: GALGAS__32_stringlist mProperty_mInfoPlistFileList ;
-  public: inline GALGAS__32_stringlist readProperty_mInfoPlistFileList (void) const {
-    return mProperty_mInfoPlistFileList ;
-  }
-
-  public: GALGAS__32_stringlist mProperty_mXIB_5F_fileList ;
-  public: inline GALGAS__32_stringlist readProperty_mXIB_5F_fileList (void) const {
-    return mProperty_mXIB_5F_fileList ;
-  }
-
-  public: GALGAS__32_stringlist mProperty_mTIFF_5F_fileList ;
-  public: inline GALGAS__32_stringlist readProperty_mTIFF_5F_fileList (void) const {
-    return mProperty_mTIFF_5F_fileList ;
-  }
-
-  public: GALGAS__32_stringlist mProperty_mICNS_5F_fileList ;
-  public: inline GALGAS__32_stringlist readProperty_mICNS_5F_fileList (void) const {
-    return mProperty_mICNS_5F_fileList ;
-  }
-
-  public: GALGAS_string mProperty_mApplicationBundleName ;
-  public: inline GALGAS_string readProperty_mApplicationBundleName (void) const {
-    return mProperty_mApplicationBundleName ;
-  }
-
-  public: GALGAS_string mProperty_mProjectName ;
-  public: inline GALGAS_string readProperty_mProjectName (void) const {
-    return mProperty_mProjectName ;
-  }
-
-//--------------------------------- Accessors
-  public: VIRTUAL_IN_DEBUG bool isValid (void) const override ;
-  public: VIRTUAL_IN_DEBUG void drop (void) override ;
-
-//--------------------------------- Default constructor
-  public: GALGAS_XcodeProjectDescriptor (void) ;
-
-//--------------------------------- Property setters
-  public: inline void setter_setMSequenceNumber (const GALGAS_uint & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mSequenceNumber = inValue ;
-  }
-
-  public: inline void setter_setMMainGroupReference (const GALGAS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mMainGroupReference = inValue ;
-  }
-
-  public: inline void setter_setMMainGroupChildrenRefs (const GALGAS_stringlist & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mMainGroupChildrenRefs = inValue ;
-  }
-
-  public: inline void setter_setMProjectObjectReference (const GALGAS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mProjectObjectReference = inValue ;
-  }
-
-  public: inline void setter_setMGroupList (const GALGAS_XCodeGroupList & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mGroupList = inValue ;
-  }
-
-  public: inline void setter_setMToolTargetList (const GALGAS_XCodeToolTargetList & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mToolTargetList = inValue ;
-  }
-
-  public: inline void setter_setMAppTargetList (const GALGAS_XCodeAppTargetList & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mAppTargetList = inValue ;
-  }
-
-  public: inline void setter_setMCFileList (const GALGAS__32_stringlist & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mCFileList = inValue ;
-  }
-
-  public: inline void setter_setMCppFileList (const GALGAS__32_stringlist & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mCppFileList = inValue ;
-  }
-
-  public: inline void setter_setM_5F_M_5F_FileList (const GALGAS__32_stringlist & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_m_5F_M_5F_FileList = inValue ;
-  }
-
-  public: inline void setter_setM_5F_MM_5F_FileList (const GALGAS__32_stringlist & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_m_5F_MM_5F_FileList = inValue ;
-  }
-
-  public: inline void setter_setMFrameworkFileList (const GALGAS__32_stringlist & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mFrameworkFileList = inValue ;
-  }
-
-  public: inline void setter_setMHeaderFileList (const GALGAS__32_stringlist & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mHeaderFileList = inValue ;
-  }
-
-  public: inline void setter_setMBuildFileList (const GALGAS_BuildFileList & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mBuildFileList = inValue ;
-  }
-
-  public: inline void setter_setMDefaultConfigurationRef (const GALGAS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mDefaultConfigurationRef = inValue ;
-  }
-
-  public: inline void setter_setMDefaultConfigurationSettingList (const GALGAS_stringlist & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mDefaultConfigurationSettingList = inValue ;
-  }
-
-  public: inline void setter_setMProjectBuildConfigurationRef (const GALGAS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mProjectBuildConfigurationRef = inValue ;
-  }
-
-  public: inline void setter_setMInfoPlistFileList (const GALGAS__32_stringlist & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mInfoPlistFileList = inValue ;
-  }
-
-  public: inline void setter_setMXIB_5F_fileList (const GALGAS__32_stringlist & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mXIB_5F_fileList = inValue ;
-  }
-
-  public: inline void setter_setMTIFF_5F_fileList (const GALGAS__32_stringlist & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mTIFF_5F_fileList = inValue ;
-  }
-
-  public: inline void setter_setMICNS_5F_fileList (const GALGAS__32_stringlist & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mICNS_5F_fileList = inValue ;
-  }
-
-  public: inline void setter_setMApplicationBundleName (const GALGAS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mApplicationBundleName = inValue ;
-  }
-
-  public: inline void setter_setMProjectName (const GALGAS_string & inValue COMMA_UNUSED_LOCATION_ARGS) {
-    mProperty_mProjectName = inValue ;
-  }
-
-//--------------------------------- Virtual destructor (in debug mode)
-  public: virtual ~ GALGAS_XcodeProjectDescriptor (void) ;
-
-//--------------------------------- Native constructor
-  public: GALGAS_XcodeProjectDescriptor (const GALGAS_uint & in_mSequenceNumber,
-                                         const GALGAS_string & in_mMainGroupReference,
-                                         const GALGAS_stringlist & in_mMainGroupChildrenRefs,
-                                         const GALGAS_string & in_mProjectObjectReference,
-                                         const GALGAS_XCodeGroupList & in_mGroupList,
-                                         const GALGAS_XCodeToolTargetList & in_mToolTargetList,
-                                         const GALGAS_XCodeAppTargetList & in_mAppTargetList,
-                                         const GALGAS__32_stringlist & in_mCFileList,
-                                         const GALGAS__32_stringlist & in_mCppFileList,
-                                         const GALGAS__32_stringlist & in_m_5F_M_5F_FileList,
-                                         const GALGAS__32_stringlist & in_m_5F_MM_5F_FileList,
-                                         const GALGAS__32_stringlist & in_mFrameworkFileList,
-                                         const GALGAS__32_stringlist & in_mHeaderFileList,
-                                         const GALGAS_BuildFileList & in_mBuildFileList,
-                                         const GALGAS_string & in_mDefaultConfigurationRef,
-                                         const GALGAS_stringlist & in_mDefaultConfigurationSettingList,
-                                         const GALGAS_string & in_mProjectBuildConfigurationRef,
-                                         const GALGAS__32_stringlist & in_mInfoPlistFileList,
-                                         const GALGAS__32_stringlist & in_mXIB_5F_fileList,
-                                         const GALGAS__32_stringlist & in_mTIFF_5F_fileList,
-                                         const GALGAS__32_stringlist & in_mICNS_5F_fileList,
-                                         const GALGAS_string & in_mApplicationBundleName,
-                                         const GALGAS_string & in_mProjectName) ;
-
-//-- Start of type generic part
-
-//--------------------------------- Object cloning
-  protected: virtual AC_GALGAS_root * clonedObject (void) const override ;
-
-//--------------------------------- Object extraction
-  public: static GALGAS_XcodeProjectDescriptor extractObject (const GALGAS_object & inObject,
-                                                              Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS class functions
-  public: static class GALGAS_XcodeProjectDescriptor class_func_new (Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Implementation of getter 'description'
-  public: VIRTUAL_IN_DEBUG void description (String & ioString,
-                                             const int32_t inIndentation) const override ;
-//--------------------------------- Comparison
-  public: typeComparisonResult objectCompare (const GALGAS_XcodeProjectDescriptor & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const override ;
- 
-} ; // End of GALGAS_XcodeProjectDescriptor class
+//--------------------------------------------------------------------------------------------------
 
 
 //--------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_XcodeProjectDescriptor ;
+
+//--------------------------------------------------------------------------------------------------
+
+extern const cDirectoryWrapper gWrapperDirectory_0_lexiqueGenerationTemplates ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@XcodeProjectDescriptor addTIFF_file'
+//Filewrapper template 'lexiqueGenerationTemplates headerZone2'
 //
 //--------------------------------------------------------------------------------------------------
 
-void extensionSetter_addTIFF_5F_file (class GALGAS_XcodeProjectDescriptor & ioObject,
-                                      const class GALGAS_string constin_inFileName,
-                                      class GALGAS_string & out_outFileRef,
-                                      class Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) ;
+GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_headerZone_32_ (class Compiler * inCompiler,
+                                                                             const class GALGAS_string & in_LEXIQUE_5F_IDENTIFIER,
+                                                                             const class GALGAS_lexicalListDeclarationListAST & in_DELIMITOR_5F_LIST_5F_LIST,
+                                                                             const class GALGAS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT,
+                                                                             const class GALGAS_templateDelimitorListAST & in_TEMPLATE_5F_DELIMITOR_5F_LIST,
+                                                                             const class GALGAS_indexingListAST & in_INDEXING_5F_LIST
+                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@XcodeProjectDescriptor getReferenceKey'
+//Filewrapper template 'lexiqueGenerationTemplates implementationZone2Galgas3'
 //
 //--------------------------------------------------------------------------------------------------
 
-void extensionSetter_getReferenceKey (class GALGAS_XcodeProjectDescriptor & ioObject,
-                                      class GALGAS_string & out_outRef,
-                                      class Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) ;
+GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_implementationZone_32_Galgas_33_ (class Compiler * inCompiler,
+                                                                                               const class GALGAS_string & in_LEXIQUE_5F_IDENTIFIER,
+                                                                                               const class GALGAS_bool & in_USE_5F_LOOP_5F_LOCAL_5F_VARIABLE,
+                                                                                               const class GALGAS_lexicalAttributeMap & in_LEXICAL_5F_ATTRIBUTE_5F_MAP,
+                                                                                               const class GALGAS_lexicalMessageMap & in_LEXICAL_5F_MESSAGE_5F_MAP,
+                                                                                               const class GALGAS_terminalList & in_TERMINAL_5F_LIST,
+                                                                                               const class GALGAS_lexicalExplicitTokenListMapMap & in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP,
+                                                                                               const class GALGAS_stringset & in_STRINGS_5F_IN_5F_EXPLICIT_5F_RULES,
+                                                                                               const class GALGAS_lexicalRuleListAST & in_LEXICAL_5F_RULE_5F_LIST,
+                                                                                               const class GALGAS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT,
+                                                                                               const class GALGAS_templateDelimitorListAST & in_TEMPLATE_5F_DELIMITOR_5F_LIST,
+                                                                                               const class GALGAS_string & in_LEXIQUE_5F_COMPONENT_5F_NAME,
+                                                                                               const class GALGAS_templateReplacementListAST & in_TEMPLATE_5F_REPLACEMENT_5F_LIST,
+                                                                                               const class GALGAS_lexicalStyleListAST & in_LEXICAL_5F_STYLE_5F_LIST
+                                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@XcodeProjectDescriptor addInfoPlistFile'
+//Filewrapper template 'lexiqueGenerationTemplates cocoaHeaderZone2'
 //
 //--------------------------------------------------------------------------------------------------
 
-void extensionSetter_addInfoPlistFile (class GALGAS_XcodeProjectDescriptor & ioObject,
-                                       const class GALGAS_string constin_inFileName,
-                                       class GALGAS_string & out_outFileRef,
-                                       class Compiler * inCompiler
-                                       COMMA_LOCATION_ARGS) ;
+GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_cocoaHeaderZone_32_ (class Compiler * inCompiler,
+                                                                                  const class GALGAS_string & in_LEXIQUE_5F_CLASS_5F_NAME,
+                                                                                  const class GALGAS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT
+                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@XcodeProjectDescriptor addXIBFile'
+//Filewrapper template 'lexiqueGenerationTemplates cocoaImplementationZone2'
 //
 //--------------------------------------------------------------------------------------------------
 
-void extensionSetter_addXIBFile (class GALGAS_XcodeProjectDescriptor & ioObject,
-                                 const class GALGAS_string constin_inFileName,
-                                 class GALGAS_string & out_outFileRef,
-                                 class Compiler * inCompiler
-                                 COMMA_LOCATION_ARGS) ;
+GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_cocoaImplementationZone_32_ (class Compiler * inCompiler,
+                                                                                          const class GALGAS_string & in_LEXIQUE_5F_HEADER_5F_FILE_5F_NAME,
+                                                                                          const class GALGAS_string & in_LEXIQUE_5F_CLASS_5F_NAME,
+                                                                                          const class GALGAS_lexicalAttributeMap & in_LEXICAL_5F_ATTRIBUTE_5F_MAP,
+                                                                                          const class GALGAS_lexicalMessageMap & in_LEXICAL_5F_MESSAGE_5F_MAP,
+                                                                                          const class GALGAS_terminalList & in_TERMINAL_5F_LIST,
+                                                                                          const class GALGAS_stringset & in_STRINGS_5F_IN_5F_EXPLICIT_5F_RULES,
+                                                                                          const class GALGAS_lexicalRuleListAST & in_LEXICAL_5F_RULE_5F_LIST,
+                                                                                          const class GALGAS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT,
+                                                                                          const class GALGAS_templateReplacementListAST & in_TEMPLATE_5F_REPLACEMENT_5F_LIST,
+                                                                                          const class GALGAS_indexingListAST & in_INDEXING_5F_LIST,
+                                                                                          const class GALGAS_lexicalStyleListAST & in_LEXICAL_5F_STYLE_5F_LIST,
+                                                                                          const class GALGAS_templateDelimitorListAST & in_TEMPLATE_5F_DELIMITOR_5F_LIST
+                                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@XcodeProjectDescriptor addFrameworkFile'
+//Filewrapper template 'lexiqueGenerationTemplates swiftCocoaImplementationZone2'
 //
 //--------------------------------------------------------------------------------------------------
 
-void extensionSetter_addFrameworkFile (class GALGAS_XcodeProjectDescriptor & ioObject,
-                                       const class GALGAS_string constin_inFileName,
-                                       class GALGAS_string & out_outFileRef,
-                                       class Compiler * inCompiler
-                                       COMMA_LOCATION_ARGS) ;
+GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_swiftCocoaImplementationZone_32_ (class Compiler * inCompiler,
+                                                                                               const class GALGAS_string & in_LEXIQUE_5F_HEADER_5F_FILE_5F_NAME,
+                                                                                               const class GALGAS_string & in_LEXIQUE_5F_CLASS_5F_NAME,
+                                                                                               const class GALGAS_lexicalAttributeMap & in_LEXICAL_5F_ATTRIBUTE_5F_MAP,
+                                                                                               const class GALGAS_lexicalMessageMap & in_LEXICAL_5F_MESSAGE_5F_MAP,
+                                                                                               const class GALGAS_terminalList & in_TERMINAL_5F_LIST,
+                                                                                               const class GALGAS_stringset & in_STRINGS_5F_IN_5F_EXPLICIT_5F_RULES,
+                                                                                               const class GALGAS_lexicalRuleListAST & in_LEXICAL_5F_RULE_5F_LIST,
+                                                                                               const class GALGAS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT,
+                                                                                               const class GALGAS_templateReplacementListAST & in_TEMPLATE_5F_REPLACEMENT_5F_LIST,
+                                                                                               const class GALGAS_indexingListAST & in_INDEXING_5F_LIST,
+                                                                                               const class GALGAS_lexicalStyleListAST & in_LEXICAL_5F_STYLE_5F_LIST,
+                                                                                               const class GALGAS_templateDelimitorListAST & in_TEMPLATE_5F_DELIMITOR_5F_LIST
+                                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@XcodeProjectDescriptor addMFile'
+//Function 'lexiqueNameForUsefulEntitiesGraph'
 //
 //--------------------------------------------------------------------------------------------------
 
-void extensionSetter_addMFile (class GALGAS_XcodeProjectDescriptor & ioObject,
-                               const class GALGAS_string constin_inFileName,
-                               class GALGAS_string & out_outFileRef,
-                               class Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) ;
+class GALGAS_lstring function_lexiqueNameForUsefulEntitiesGraph (const class GALGAS_lstring & constinArgument0,
+                                                                 class Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@XcodeProjectDescriptor addMMFile'
+//Routine 'buildLexicalFunctionMap!'
 //
 //--------------------------------------------------------------------------------------------------
 
-void extensionSetter_addMMFile (class GALGAS_XcodeProjectDescriptor & ioObject,
-                                const class GALGAS_string constin_inFileName,
-                                class GALGAS_string & out_outFileRef,
-                                class Compiler * inCompiler
-                                COMMA_LOCATION_ARGS) ;
+void routine_buildLexicalFunctionMap_21_ (class GALGAS_lexicalFunctionMap & outArgument0,
+                                          class Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@XcodeProjectDescriptor addCppFile'
+//Routine 'buildLexicalRoutineMap!'
 //
 //--------------------------------------------------------------------------------------------------
 
-void extensionSetter_addCppFile (class GALGAS_XcodeProjectDescriptor & ioObject,
-                                 const class GALGAS_string constin_inFileName,
-                                 class GALGAS_string & out_outFileRef,
-                                 class Compiler * inCompiler
-                                 COMMA_LOCATION_ARGS) ;
+void routine_buildLexicalRoutineMap_21_ (class GALGAS_lexicalRoutineMap & outArgument0,
+                                         class Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@XcodeProjectDescriptor addCFile'
+//Routine 'lexicalUnicodeTestFunctionAnalysis!'
 //
 //--------------------------------------------------------------------------------------------------
 
-void extensionSetter_addCFile (class GALGAS_XcodeProjectDescriptor & ioObject,
-                               const class GALGAS_string constin_inFileName,
-                               class GALGAS_string & out_outFileRef,
-                               class Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) ;
+void routine_lexicalUnicodeTestFunctionAnalysis_21_ (class GALGAS_stringset & outArgument0,
+                                                     class Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@XcodeProjectDescriptor addHeaderFile'
+//Filewrapper 'templateLexiqueGenerationTemplates'
 //
 //--------------------------------------------------------------------------------------------------
 
-void extensionSetter_addHeaderFile (class GALGAS_XcodeProjectDescriptor & ioObject,
-                                    const class GALGAS_string constin_inFileName,
-                                    class GALGAS_string & out_outFileRef,
-                                    class Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const cDirectoryWrapper gWrapperDirectory_0_templateLexiqueGenerationTemplates ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@XcodeProjectDescriptor addBuildFile'
+//Filewrapper template 'templateLexiqueGenerationTemplates cppHeader'
 //
 //--------------------------------------------------------------------------------------------------
 
-void extensionSetter_addBuildFile (class GALGAS_XcodeProjectDescriptor & ioObject,
-                                   const class GALGAS_string constin_inFileReference,
-                                   const class GALGAS_string constin_inFileName,
-                                   class GALGAS_string & out_outBuildRef,
-                                   class Compiler * inCompiler
-                                   COMMA_LOCATION_ARGS) ;
+GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_cppHeader (class Compiler * inCompiler,
+                                                                                const class GALGAS_string & in_LEXIQUE_5F_IDENTIFIER,
+                                                                                const class GALGAS_string & in_SUPER_5F_LEXIQUE_5F_IDENTIFIER
+                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@XcodeProjectDescriptor addToolTarget'
+//Filewrapper template 'templateLexiqueGenerationTemplates cppImplementation'
 //
 //--------------------------------------------------------------------------------------------------
 
-void extensionSetter_addToolTarget (class GALGAS_XcodeProjectDescriptor & ioObject,
-                                    const class GALGAS_string constin_inTargetName,
-                                    const class GALGAS_string constin_inProductFileName,
-                                    const class GALGAS_stringlist constin_inSourceList,
-                                    const class GALGAS_stringlist constin_inToolFrameworksFileRefList,
-                                    const class GALGAS_stringlist constin_inBuildConfigurationSettingList,
-                                    class GALGAS_string & out_outTargetRef,
-                                    class GALGAS_string & out_outProductFileRef,
-                                    class Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) ;
+GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_cppImplementation (class Compiler * inCompiler,
+                                                                                        const class GALGAS_string & in_LEXIQUE_5F_IDENTIFIER,
+                                                                                        const class GALGAS_string & in_SUPER_5F_LEXIQUE_5F_IDENTIFIER,
+                                                                                        const class GALGAS_lexicalExplicitTokenListMapMap & in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP,
+                                                                                        const class GALGAS_stringset & in_STRINGS_5F_IN_5F_EXPLICIT_5F_RULES,
+                                                                                        const class GALGAS_templateDelimitorList & in_TEMPLATE_5F_DELIMITOR_5F_LIST,
+                                                                                        const class GALGAS_terminalList & in_TERMINAL_5F_LIST,
+                                                                                        const class GALGAS_string & in_LEXIQUE_5F_COMPONENT_5F_NAME,
+                                                                                        const class GALGAS_templateReplacementListAST & in_TEMPLATE_5F_REPLACEMENT_5F_LIST
+                                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@XcodeProjectDescriptor addAppTarget'
+//Filewrapper template 'templateLexiqueGenerationTemplates objcCocoaHeaderZone'
 //
 //--------------------------------------------------------------------------------------------------
 
-void extensionSetter_addAppTarget (class GALGAS_XcodeProjectDescriptor & ioObject,
-                                   const class GALGAS_string constin_inTargetName,
-                                   const class GALGAS_string constin_inProductFileName,
-                                   const class GALGAS_stringlist constin_inSourceList,
-                                   const class GALGAS_stringlist constin_inFrameworksFileRefList,
-                                   const class GALGAS_stringlist constin_inResourceFileBuildRefs,
-                                   const class GALGAS_stringlist constin_inBuildConfigurationSettingList,
-                                   const class GALGAS_stringlist constin_inDependentTargetRefList,
-                                   const class GALGAS__32_stringlist constin_inProductCopyList,
-                                   class GALGAS_string & out_outProductFileRef,
-                                   class Compiler * inCompiler
-                                   COMMA_LOCATION_ARGS) ;
+GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_objcCocoaHeaderZone (class Compiler * inCompiler,
+                                                                                          const class GALGAS_string & in_LEXIQUE_5F_CLASS_5F_NAME,
+                                                                                          const class GALGAS_string & in_SUPER_5F_LEXIQUE_5F_CLASS_5F_NAME,
+                                                                                          const class GALGAS_string & in_SUPER_5F_LEXIQUE_5F_HEADER_5F_FILE_5F_NAME
+                                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@XcodeProjectDescriptor addGroup'
+//Filewrapper template 'templateLexiqueGenerationTemplates objcCocoaImplementationZone'
 //
 //--------------------------------------------------------------------------------------------------
 
-void extensionSetter_addGroup (class GALGAS_XcodeProjectDescriptor & ioObject,
-                               const class GALGAS_string constin_inGroupName,
-                               const class GALGAS_string constin_inGroupPath,
-                               const class GALGAS_stringlist constin_inChildrenRefs,
-                               class GALGAS_string & out_outGroupRef,
-                               class Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) ;
+GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_objcCocoaImplementationZone (class Compiler * inCompiler,
+                                                                                                  const class GALGAS_string & in_LEXIQUE_5F_HEADER_5F_FILE_5F_NAME,
+                                                                                                  const class GALGAS_string & in_LEXIQUE_5F_CLASS_5F_NAME,
+                                                                                                  const class GALGAS_terminalList & in_TERMINAL_5F_LIST,
+                                                                                                  const class GALGAS_templateDelimitorList & in_TEMPLATE_5F_DELIMITOR_5F_LIST,
+                                                                                                  const class GALGAS_templateReplacementListAST & in_TEMPLATE_5F_REPLACEMENT_5F_LIST
+                                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@XcodeProjectDescriptor addGroupWithFiles'
+//Filewrapper template 'templateLexiqueGenerationTemplates swiftCocoaImplementationZone'
 //
 //--------------------------------------------------------------------------------------------------
 
-void extensionSetter_addGroupWithFiles (class GALGAS_XcodeProjectDescriptor & ioObject,
-                                        const class GALGAS_string constin_inGroupName,
-                                        const class GALGAS_string constin_inGroupPath,
-                                        const class GALGAS_stringset constin_inFileNames,
-                                        class GALGAS_stringlist & io_ioCFileBuildRefs,
-                                        class GALGAS_stringlist & io_ioCppFileBuildRefs,
-                                        class GALGAS_stringlist & io_ioMFileBuildRefs,
-                                        class GALGAS_stringlist & io_ioMMFileBuildRefs,
-                                        class GALGAS_stringlist & io_ioFrameWorkFileBuildRefs,
-                                        class GALGAS_stringlist & io_ioResourceFileBuildRefs,
-                                        class GALGAS_string & out_outGroupRef,
-                                        class Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) ;
+GALGAS_string filewrapperTemplate_templateLexiqueGenerationTemplates_swiftCocoaImplementationZone (class Compiler * inCompiler,
+                                                                                                   const class GALGAS_string & in_LEXIQUE_5F_HEADER_5F_FILE_5F_NAME,
+                                                                                                   const class GALGAS_string & in_LEXIQUE_5F_CLASS_5F_NAME,
+                                                                                                   const class GALGAS_string & in_SUPER_5F_LEXIQUE_5F_CLASS_5F_NAME,
+                                                                                                   const class GALGAS_terminalList & in_TERMINAL_5F_LIST,
+                                                                                                   const class GALGAS_templateDelimitorList & in_TEMPLATE_5F_DELIMITOR_5F_LIST,
+                                                                                                   const class GALGAS_templateReplacementListAST & in_TEMPLATE_5F_REPLACEMENT_5F_LIST
+                                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@XcodeProjectDescriptor addICNS_file'
+//Routine 'printPredefinedLexicalActions'
 //
 //--------------------------------------------------------------------------------------------------
 
-void extensionSetter_addICNS_5F_file (class GALGAS_XcodeProjectDescriptor & ioObject,
-                                      const class GALGAS_string constin_inFileName,
-                                      class GALGAS_string & out_outFileRef,
-                                      class Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension setter '@XcodeProjectDescriptor placeGroupAsMainGroup'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_placeGroupAsMainGroup (class GALGAS_XcodeProjectDescriptor & ioObject,
-                                            const class GALGAS_string constin_inGroupRef,
-                                            class Compiler * inCompiler
+void routine_printPredefinedLexicalActions (class Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Extension setter '@XcodeProjectDescriptor addSettingsToDefaultConfiguration'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionSetter_addSettingsToDefaultConfiguration (class GALGAS_XcodeProjectDescriptor & ioObject,
-                                                        const class GALGAS_stringlist constin_inSettingList,
-                                                        class Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Extension method '@XcodeProjectDescriptor generateAtPath'
-//
-//--------------------------------------------------------------------------------------------------
-
-void extensionMethod_generateAtPath (const class GALGAS_XcodeProjectDescriptor inObject,
-                                     const class GALGAS_string constin_inPath,
-                                     const class GALGAS_string constin_inCacheFilePath,
-                                     class Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
-
-//--------------------------------------------------------------------------------------------------
-//
-//Filewrapper 'xcodeProjectGenerationFilewrapper'
+//Filewrapper 'optionGenerationTemplates'
 //
 //--------------------------------------------------------------------------------------------------
 
@@ -561,37 +264,225 @@ void extensionMethod_generateAtPath (const class GALGAS_XcodeProjectDescriptor i
 
 //--------------------------------------------------------------------------------------------------
 
-extern const cDirectoryWrapper gWrapperDirectory_0_xcodeProjectGenerationFilewrapper ;
-extern const cDirectoryWrapper gWrapperDirectory_1_xcodeProjectGenerationFilewrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_0_optionGenerationTemplates ;
 
 //--------------------------------------------------------------------------------------------------
 //
-//Filewrapper template 'xcodeProjectGenerationFilewrapper xcodeproj'
+//Filewrapper template 'optionGenerationTemplates optionHeaderZone3'
 //
 //--------------------------------------------------------------------------------------------------
 
-GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (class Compiler * inCompiler,
-                                                                               const class GALGAS_string & in_PROJECT_5F_REF,
-                                                                               const class GALGAS_string & in_MAIN_5F_GROUP_5F_REF,
-                                                                               const class GALGAS_XCodeGroupList & in_GROUPS,
-                                                                               const class GALGAS_stringlist & in_MAIN_5F_GROUP_5F_CHILDREN_5F_REFS,
-                                                                               const class GALGAS_XCodeToolTargetList & in_TOOL_5F_TARGET_5F_LIST,
-                                                                               const class GALGAS_XCodeAppTargetList & in_APP_5F_TARGET_5F_LIST,
-                                                                               const class GALGAS__32_stringlist & in_C_5F_FILE_5F_LIST,
-                                                                               const class GALGAS__32_stringlist & in_CPP_5F_FILE_5F_LIST,
-                                                                               const class GALGAS__32_stringlist & in_M_5F_FILE_5F_LIST,
-                                                                               const class GALGAS__32_stringlist & in_MM_5F_FILE_5F_LIST,
-                                                                               const class GALGAS__32_stringlist & in_FRAMEWORK_5F_FILE_5F_LIST,
-                                                                               const class GALGAS__32_stringlist & in_HEADER_5F_FILE_5F_LIST,
-                                                                               const class GALGAS__32_stringlist & in_PLIST_5F_FILE_5F_LIST,
-                                                                               const class GALGAS__32_stringlist & in_TIFF_5F_FILE_5F_LIST,
-                                                                               const class GALGAS__32_stringlist & in_ICNS_5F_FILE_5F_LIST,
-                                                                               const class GALGAS__32_stringlist & in_XIB_5F_FILE_5F_LIST,
-                                                                               const class GALGAS_BuildFileList & in_BUILD_5F_FILE_5F_LIST,
-                                                                               const class GALGAS_string & in_DEFAULT_5F_CONFIGURATION_5F_REF,
-                                                                               const class GALGAS_stringlist & in_DEFAULT_5F_CONFIGURATION_5F_SETTING_5F_LIST,
-                                                                               const class GALGAS_string & in_PROJECT_5F_BUILD_5F_DEFAULT_5F_CONFIGURATION_5F_REF,
-                                                                               const class GALGAS_string & in_APPLICATION_5F_BUNDLE_5F_BASE,
-                                                                               const class GALGAS_string & in_PROJECT_5F_NAME
-                                                                               COMMA_LOCATION_ARGS) ;
+GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionHeaderZone_33_ (class Compiler * inCompiler,
+                                                                                  const class GALGAS_string & in_OPTION_5F_COMPONENT_5F_NAME,
+                                                                                  const class GALGAS_commandLineOptionSortedList & in_BOOL_5F_OPTION_5F_SORTED_5F_LIST,
+                                                                                  const class GALGAS_commandLineOptionSortedList & in_UINT_5F_OPTION_5F_SORTED_5F_LIST,
+                                                                                  const class GALGAS_commandLineOptionSortedList & in_STRING_5F_OPTION_5F_SORTED_5F_LIST,
+                                                                                  const class GALGAS_commandLineOptionSortedList & in_STRING_5F_LIST_5F_OPTION_5F_SORTED_5F_LIST
+                                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'optionGenerationTemplates optionImplementationGalgas3'
+//
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionImplementationGalgas_33_ (class Compiler * inCompiler,
+                                                                                            const class GALGAS_string & in_OPTION_5F_COMPONENT_5F_NAME,
+                                                                                            const class GALGAS_commandLineOptionSortedList & in_BOOL_5F_OPTION_5F_SORTED_5F_LIST,
+                                                                                            const class GALGAS_commandLineOptionSortedList & in_UINT_5F_OPTION_5F_SORTED_5F_LIST,
+                                                                                            const class GALGAS_commandLineOptionSortedList & in_STRING_5F_OPTION_5F_SORTED_5F_LIST,
+                                                                                            const class GALGAS_commandLineOptionSortedList & in_STRING_5F_LIST_5F_OPTION_5F_SORTED_5F_LIST
+                                                                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'optionGenerationTemplates optionHeaderCocoaZone2'
+//
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionHeaderCocoaZone_32_ (class Compiler * inCompiler,
+                                                                                       const class GALGAS_string & in_OPTION_5F_COMPONENT_5F_NAME
+                                                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'optionGenerationTemplates optionHeaderCocoaZone3'
+//
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionHeaderCocoaZone_33_ (class Compiler * inCompiler,
+                                                                                       const class GALGAS_string & in_OPTION_5F_COMPONENT_5F_NAME
+                                                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'optionGenerationTemplates optionImplementationCocoa'
+//
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionImplementationCocoa (class Compiler * inCompiler,
+                                                                                       const class GALGAS_string & in_OPTION_5F_HEADER_5F_FILE_5F_NAME,
+                                                                                       const class GALGAS_string & in_OPTION_5F_COMPONENT_5F_NAME,
+                                                                                       const class GALGAS_commandLineOptionSortedList & in_BOOL_5F_OPTION_5F_SORTED_5F_LIST,
+                                                                                       const class GALGAS_commandLineOptionSortedList & in_UINT_5F_OPTION_5F_SORTED_5F_LIST,
+                                                                                       const class GALGAS_commandLineOptionSortedList & in_STRING_5F_OPTION_5F_SORTED_5F_LIST,
+                                                                                       const class GALGAS_commandLineOptionSortedList & in_STRING_5F_LIST_5F_OPTION_5F_SORTED_5F_LIST
+                                                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'optionGenerationTemplates optionImplementationSwiftCocoa'
+//
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionImplementationSwiftCocoa (class Compiler * inCompiler,
+                                                                                            const class GALGAS_string & in_OPTION_5F_HEADER_5F_FILE_5F_NAME,
+                                                                                            const class GALGAS_string & in_OPTION_5F_COMPONENT_5F_NAME,
+                                                                                            const class GALGAS_commandLineOptionSortedList & in_BOOL_5F_OPTION_5F_SORTED_5F_LIST,
+                                                                                            const class GALGAS_commandLineOptionSortedList & in_UINT_5F_OPTION_5F_SORTED_5F_LIST,
+                                                                                            const class GALGAS_commandLineOptionSortedList & in_STRING_5F_OPTION_5F_SORTED_5F_LIST,
+                                                                                            const class GALGAS_commandLineOptionSortedList & in_STRING_5F_LIST_5F_OPTION_5F_SORTED_5F_LIST
+                                                                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'compileAllGuiComponentFromASTGalgas3??!'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_compileAllGuiComponentFromASTGalgas_33__3F__3F__21_ (const class GALGAS_galgasGUIComponentListAST constinArgument0,
+                                                                  const class GALGAS_semanticContext constinArgument1,
+                                                                  class GALGAS_optionComponentMapForGeneration & outArgument2,
+                                                                  class Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'guiComponentSemanticAnalysis??&'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_guiComponentSemanticAnalysis_3F__3F__26_ (const class GALGAS_galgasGUIComponentListAST_2D_element constinArgument0,
+                                                       const class GALGAS_semanticContext constinArgument1,
+                                                       class GALGAS_optionComponentMapForGeneration & ioArgument2,
+                                                       class Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'generateAllGuiComponentsGalgas3???&&'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_generateAllGuiComponentsGalgas_33__3F__3F__3F__26__26_ (const class GALGAS_optionComponentMapForGeneration constinArgument0,
+                                                                     const class GALGAS_string constinArgument1,
+                                                                     const class GALGAS_bool constinArgument2,
+                                                                     class GALGAS_stringlist & ioArgument3,
+                                                                     class GALGAS_stringset & ioArgument4,
+                                                                     class Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper 'guiGenerationTemplates'
+//
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------------------
+
+extern const cDirectoryWrapper gWrapperDirectory_0_guiGenerationTemplates ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'guiGenerationTemplates objc_gui_implementation'
+//
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_guiGenerationTemplates_objc_5F_gui_5F_implementation (class Compiler * inCompiler,
+                                                                                        const class GALGAS_guiAnalysisContext & in_GUI_5F_CONTEXT,
+                                                                                        const class GALGAS_bool & in_QUIET_5F_OUTPUT_5F_BY_5F_DEFAULT
+                                                                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'guiGenerationTemplates swift_gui_implementation'
+//
+//--------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_guiGenerationTemplates_swift_5F_gui_5F_implementation (class Compiler * inCompiler,
+                                                                                         const class GALGAS_guiAnalysisContext & in_GUI_5F_CONTEXT,
+                                                                                         const class GALGAS_bool & in_QUIET_5F_OUTPUT_5F_BY_5F_DEFAULT
+                                                                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'forbiddenKeysForBoolset'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_stringset function_forbiddenKeysForBoolset (class Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'addExtensions???&&??isClass&&&?acceptSetters'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_addExtensions_3F__3F__3F__26__26__3F__3F_isClass_26__26__26__3F_acceptSetters (const class GALGAS_extensionMethodMapForBuildingContext constinArgument0,
+                                                                                            const class GALGAS_extensionGetterMapForBuildingContext constinArgument1,
+                                                                                            const class GALGAS_extensionSetterMapForBuildingContext constinArgument2,
+                                                                                            class GALGAS_semanticContext & ioArgument3,
+                                                                                            class GALGAS_unifiedTypeMap & ioArgument4,
+                                                                                            const class GALGAS_lstring constinArgument5,
+                                                                                            const class GALGAS_bool constinArgument6,
+                                                                                            class GALGAS_getterMap & ioArgument7,
+                                                                                            class GALGAS_setterMap & ioArgument8,
+                                                                                            class GALGAS_instanceMethodMap & ioArgument9,
+                                                                                            const class GALGAS_bool constinArgument10,
+                                                                                            class Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'commonGetterMapForAllTypes&!'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_commonGetterMapForAllTypes_26__21_ (class GALGAS_unifiedTypeMap & ioArgument0,
+                                                 class GALGAS_getterMap & outArgument1,
+                                                 class Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Routine 'enterBaseFinalGetterWithoutArgument&&?getterName?obsoleteName?returnedTypeName?hasCompilerArgument'
+//
+//--------------------------------------------------------------------------------------------------
+
+void routine_enterBaseFinalGetterWithoutArgument_26__26__3F_getterName_3F_obsoleteName_3F_returnedTypeName_3F_hasCompilerArgument (class GALGAS_getterMap & ioArgument0,
+                                                                                                                                   class GALGAS_unifiedTypeMap & ioArgument1,
+                                                                                                                                   const class GALGAS_string constinArgument2,
+                                                                                                                                   const class GALGAS_string constinArgument3,
+                                                                                                                                   const class GALGAS_string constinArgument4,
+                                                                                                                                   const class GALGAS_bool constinArgument5,
+                                                                                                                                   class Compiler * inCompiler
+                                                                                                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------------------------------------------------------------------------
+//
+//Function 'typeNameForUsefulEntitiesGraph'
+//
+//--------------------------------------------------------------------------------------------------
+
+class GALGAS_lstring function_typeNameForUsefulEntitiesGraph (const class GALGAS_lstring & constinArgument0,
+                                                              class Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) ;
 

@@ -66,40 +66,6 @@ syntax extension galgas3SyntaxComponentSyntax {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-
-syntax extension galgas4SyntaxComponentSyntax {
-
-  #·······························································································
-
-  rule <syntax_instruction> ?!@galgasDeclarationAST ioDeclarations
-                            !@syntaxInstructionAST outInstruction {
-    $parse$
-    let instructionLocation = @location.here
-    $loop$
-    <expression> !?ioDeclarations ?let @semanticExpressionAST variantExpression
-    let endOfVariantExpression = @location.here
-    $while$
-    <expression> !?ioDeclarations ?let @semanticExpressionAST whileExpression
-    let endOfWhileExpression = @location.here
-    $do$
-    <syntax_instruction_list> !?ioDeclarations ?let @syntaxInstructionList instructionList
-    $end$
-    let endOfInstructionList = @location.here
-    outInstruction = @parseLoopInstruction.new {
-      !instructionLocation
-      !variantExpression
-      !endOfVariantExpression
-      !whileExpression
-      !endOfWhileExpression
-      !instructionList
-      !endOfInstructionList}
-  }
-
-  #·······························································································
-
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! TRANSFORM
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 

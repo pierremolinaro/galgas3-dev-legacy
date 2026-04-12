@@ -69,49 +69,6 @@ syntax extension galgas3DeclarationsSyntax {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-
-syntax extension galgas4DeclarationsSyntax {
-
-  #·······························································································
-
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
-    $override$
-    $abstract$
-    $proc$
-    $@type$ ?let @lstring className indexing typeReferenceOverrideAbstractExtensionMethod
-    $.$
-    $identifier$ ?let @lstring mMethodName indexing overrideAbstractExtensionMethodDefinition
-    <formal_parameter_list>!?ioDeclarations ?let @formalParameterListAST formalParameterList
-    ioDeclarations.mDeclarationList += !@overridingAbstractExtensionMethodAST.new {
-      !isPredefined: false # Is not predefined
-      !className
-      !mMethodName
-      !formalParameterList
-    }
-  }
-
-  #·······························································································
-
-  rule <method_declaration> ?let @lstring inClassName
-                            ?!@galgasDeclarationAST ioDeclarations {
-    $override$
-    $abstract$
-    $proc$
-    $identifier$ ?let @lstring mMethodName indexing overrideAbstractExtensionMethodDefinition
-    <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
-    ioDeclarations.mDeclarationList += !@overridingAbstractExtensionMethodAST.new {
-      !isPredefined: false # Is not predefined
-      !inClassName
-      !mMethodName
-      !formalParameterList
-    }
-  }
-
-  #·······························································································
-
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
 #   KEY REPRESENTATION
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 

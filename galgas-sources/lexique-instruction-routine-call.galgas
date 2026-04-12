@@ -97,51 +97,6 @@ syntax extension galgas3LexiqueComponentSyntax {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-
-syntax extension galgas4LexiqueComponentSyntax {
-
-  #·······························································································
-
-  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
-    $identifier$ ?let @lstring actionName
-    var @lexicalRoutineCallActualArgumentListAST actualArgumentList = {}
-    $($
-    repeat
-    while
-      $!$
-      let passingModeLocation = @location.here
-      <lexical_output_effective_argument> ?let @lexicalRoutineOrFunctionFormalInputArgumentAST arg
-      actualArgumentList += !@lexicalFormalInputArgumentAST.new {!passingModeLocation !arg}
-    while
-      $!?$
-      let passingModeLocation = @location.here
-      $identifier$ ?let @lstring attributeName
-      let arg = @lexicalAttributeInputOutputArgumentAST.new{!passingModeLocation !attributeName}
-      actualArgumentList += !arg
-    end
-    var @lstringlist errorMessageList = {}
-    select
-    or
-      $error$
-      repeat
-        $identifier$ ?let @lstring errorMessageName
-        errorMessageList += !errorMessageName
-      while
-        $,$
-      end
-    end
-    $)$
-    ioInstructionList += !@lexicalRoutineCallInstructionAST.new {
-      !actionName
-      !actualArgumentList
-      !errorMessageList}
-  }
-
-  #·······························································································
-
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! CHECK LEXICAL INSTRUCTION
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 

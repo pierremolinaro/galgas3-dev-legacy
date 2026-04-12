@@ -84,63 +84,6 @@ syntax extension galgas3DeclarationsSyntax {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-
-syntax extension galgas4DeclarationsSyntax {
-
-  #·······························································································
-
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
-    $abstract$
-    $func$
-    $@type$ ?let className indexing typeReferenceAbstractExtensionGetter
-    $.$
-    $identifier$ ?let mGetterName indexing abstractExtensionGetterDefinition
-    <formal_input_parameter_list> !?ioDeclarations ?let @formalInputParameterListAST mFormalInputParameterList
-    $->$
-    <type_definition> !?ioDeclarations ?let returnedTypeName
-    select
-    or
-      $identifier$ ? let idf
-      warning idf : "an identifier is no longer required here" fixit { remove }
-    end
-    ioDeclarations.mDeclarationList += !@abstractExtensionGetterAST.new {
-      !isPredefined: false # Is not predefined
-      !className
-      !mGetterName
-      !mFormalInputParameterList
-      !returnedTypeName
-    }
-  }
-
-  #·······························································································
-
-  rule <method_declaration> ?let @lstring inClassName
-                            ?!@galgasDeclarationAST ioDeclarations {
-    $abstract$
-    $func$
-    $identifier$ ?let mGetterName indexing abstractExtensionGetterDefinition
-    <formal_input_parameter_list> !?ioDeclarations ?let @formalInputParameterListAST mFormalInputParameterList
-    $->$
-    <type_definition> !?ioDeclarations ?let returnedTypeName
-    select
-    or
-      $identifier$ ? let idf
-      warning idf : "an identifier is no longer required here" fixit { remove }
-    end
-    ioDeclarations.mDeclarationList += !@abstractExtensionGetterAST.new {
-      !isPredefined: false # Is not predefined
-      !inClassName
-      !mGetterName
-      !mFormalInputParameterList
-      !returnedTypeName
-    }
-  }
-
-  #·······························································································
-
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
 #   KEY REPRESENTATION
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 

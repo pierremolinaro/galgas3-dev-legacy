@@ -65,35 +65,6 @@ syntax extension galgas3ExpressionSyntax {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-
-syntax extension galgas4ExpressionSyntax {
-
-  #·······························································································
-
-  rule <expression_and> ?!@galgasDeclarationAST ioDeclarations
-                        !@semanticExpressionAST outExpression {
-    <relation_factor> !?ioDeclarations ? outExpression
-    repeat
-    while
-      let operatorLocation = @location.here
-      $&$
-      let leftOperand = outExpression
-      <relation_factor> !?ioDeclarations ?let @semanticExpressionAST rightOperand
-      outExpression = @andExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
-    while
-      let operatorLocation = @location.here
-      $&&$
-      let leftOperand = outExpression
-      <relation_factor> !?ioDeclarations ?let @semanticExpressionAST rightOperand
-      outExpression = @andShortExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
-    end
-  }
-
-  #·······························································································
-
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 

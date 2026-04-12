@@ -64,43 +64,6 @@ syntax extension galgas3LexiqueComponentSyntax {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-
-syntax extension galgas4LexiqueComponentSyntax {
-
-  #·······························································································
-
-  rule <lexical_send_instruction> !@lexicalInstructionAST outInstruction {
-    var @lexicalSendSearchListAST lexicalSendSearchList = {}
-    $%searchString$
-    repeat
-      $identifier$ ?let @lstring attributeName
-      $in$
-      $identifier$ ?let @lstring searchListName
-      lexicalSendSearchList += !attributeName !searchListName
-      $default$
-    while
-      $%searchString$
-    end
-    let @lexicalSendDefaultActionAST lexicalSendDefaultAction
-    select
-      $\$terminal\$$ ?let @lstring defaultSentTerminal
-      lexicalSendDefaultAction = @lexicalSendTerminalByDefaultAST.new {!defaultSentTerminal}
-    or
-      $error$
-      $identifier$ ?let @lstring defaultErrorMessageName
-      lexicalSendDefaultAction = @lexicalErrorByDefaultAST.new {!defaultErrorMessageName}
-    end
-    outInstruction = @lexicalStructuredSendInstructionAST.new {
-      !lexicalSendSearchList
-      !lexicalSendDefaultAction
-    }
-  }
-
-  #·······························································································
-
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! CONTEXT
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 

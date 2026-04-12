@@ -48,27 +48,6 @@ syntax extension galgas3ExpressionSyntax {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-
-syntax extension galgas4ExpressionSyntax {
-
-  #·······························································································
-
-  rule <primary> ?!@galgasDeclarationAST unused ioDeclarations
-                 !@semanticExpressionAST outExpression {
-    $lexique$
-    $[$
-    $identifier$ ?let lexiqueName
-    $:$
-    $identifier$ ?let getterName
-    outExpression = @lexiqueIntrospectionExpressionAST.new {!lexiqueName !getterName}
-    $]$
-  }
-
-  #·······························································································
-
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 

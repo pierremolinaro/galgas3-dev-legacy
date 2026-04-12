@@ -70,41 +70,6 @@ syntax extension galgas3DeclarationsSyntax {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-
-syntax extension galgas4DeclarationsSyntax {
-
-  #·······························································································
-
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
-    $graph$
-    $@type$ ?let @lstring graphTypeName indexing graphDefinition
-    $($
-    <type_definition> !?ioDeclarations ?let associatedListTypeName
-    $)$
-    ${$
-    var graphInsertModifierList = @graphInsertModifierList {}
-    repeat
-    while
-      $%insertSetter$
-      $identifier$ ?let @lstring insertName
-      $%errorMessage$
-      $"string"$ ?let @lstring errorMessage
-      graphInsertModifierList += !insertName !errorMessage
-    end
-    $}$
-    ioDeclarations.mDeclarationList += !@graphDeclarationAST.new {
-      !isPredefined: false # Is not predefined
-      !graphTypeName
-      !associatedListTypeName
-      !graphInsertModifierList
-    }
-  }
-
-  #·······························································································
-
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
 #   ENTER IN GRAPH
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 

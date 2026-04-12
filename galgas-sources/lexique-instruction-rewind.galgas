@@ -45,24 +45,6 @@ syntax extension galgas3LexiqueComponentSyntax {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-
-syntax extension galgas4LexiqueComponentSyntax {
-
-  #·······························································································
-
-  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
-    $rewind$
-    $identifier$ ?let tagName
-    $send$
-    $\$terminal\$$ ?let terminalName
-    ioInstructionList += !@lexicalRewindInstructionAST.new {!tagName !terminalName}
-  }
-
-  #·······························································································
-
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! CHECK LEXICAL INSTRUCTION
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 

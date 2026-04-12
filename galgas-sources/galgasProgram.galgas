@@ -96,25 +96,25 @@ message "a GALGAS 3 source file"
 #
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-case . "ggs"
-message "a GALGAS 4 source file"
-%useGrammar galgas4Grammar ?sourceFilePath: @lstring inSourceFile {
-#--- Search for a project file in parent directory
-  let parentDirectory = [[inSourceFile.string stringByDeletingLastPathComponent] stringByDeletingLastPathComponent]
-  let candidateProjectFiles = [parentDirectory regularFilesWithExtensions !false !{!"ggsProject"}]
-  if [candidateProjectFiles count] == 0 then
-    error inSourceFile : "no project file in parent directory of source file"
-  elsif [candidateProjectFiles count] > 1 then
-    var s = "several project files in source file parent directory:"
-    for (mValue) in candidateProjectFiles do
-      s += "\n  - " + mValue
-    end
-    error inSourceFile : s
-  else
-    let projectFilePath = parentDirectory + "/" + [candidateProjectFiles mValueAtIndex !0]
-    parseAndAnalyzeProject (!.new {!projectFilePath !inSourceFile.location} !galgas4: true !inSourceFile.string )
-  end
-}
+#case . "ggs"
+#message "a GALGAS 4 source file"
+#%useGrammar galgas4Grammar ?sourceFilePath: @lstring inSourceFile {
+##--- Search for a project file in parent directory
+#  let parentDirectory = [[inSourceFile.string stringByDeletingLastPathComponent] stringByDeletingLastPathComponent]
+#  let candidateProjectFiles = [parentDirectory regularFilesWithExtensions !false !{!"ggsProject"}]
+#  if [candidateProjectFiles count] == 0 then
+#    error inSourceFile : "no project file in parent directory of source file"
+#  elsif [candidateProjectFiles count] > 1 then
+#    var s = "several project files in source file parent directory:"
+#    for (mValue) in candidateProjectFiles do
+#      s += "\n  - " + mValue
+#    end
+#    error inSourceFile : s
+#  else
+#    let projectFilePath = parentDirectory + "/" + [candidateProjectFiles mValueAtIndex !0]
+#    parseAndAnalyzeProject (!.new {!projectFilePath !inSourceFile.location} !galgas4: true !inSourceFile.string )
+#  end
+#}
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 #
@@ -197,20 +197,20 @@ private proc compileProject ?let @lstring inProjectSourceFile
   var @galgasDeclarationAST declarationAST = .new
 //--- Parse predefined type definitions
 #  var f = filewrapper  typeGenerationTemplate
-  grammar galgas4Grammar (!?declarationAST) on
-  [[filewrapper typeGenerationTemplate] textFileContentsAtPath !"galgas-predefined-types.ggs"]
+  grammar galgas3Grammar (!?declarationAST) on
+  [[filewrapper typeGenerationTemplate] textFileContentsAtPath !"galgas-predefined-types.galgas"]
   : "GALGAS predefined types"
  //--- Parse source file
   for (mValue) in inProjectComponentAST.mProjectSourceList do
-    if [mValue pathExtension] == "galgas" then
+#    if [mValue pathExtension] == "galgas" then
       let absoluteSourcePath = [mValue absolutePathFromPath ![inProjectSourceFile stringByDeletingLastPathComponent]]
       grammar galgas3Grammar (!?declarationAST) in @lstring.new {!absoluteSourcePath !mValue.location}
-    elsif [mValue pathExtension] == "ggs" then
-      let absoluteSourcePath = [mValue absolutePathFromPath ![inProjectSourceFile stringByDeletingLastPathComponent]]
-      grammar galgas4Grammar (!?declarationAST) in @lstring.new {!absoluteSourcePath !mValue.location}
-    else
-      error mValue: "only \".galgas\" or \".ggs\" extensions are allowed here"
-    end
+#    elsif [mValue pathExtension] == "ggs" then
+#      let absoluteSourcePath = [mValue absolutePathFromPath ![inProjectSourceFile stringByDeletingLastPathComponent]]
+#      grammar galgas3Grammar (!?declarationAST) in @lstring.new {!absoluteSourcePath !mValue.location}
+#    else
+#      error mValue: "only \".galgas\" extensions are allowed here"
+#    end
   end
 #---------------------------------- Add 'print' proc
 #  var @formalParameterListAST formalParameterList = {}

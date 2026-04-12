@@ -37,27 +37,6 @@ syntax extension galgas3SyntaxComponentSyntax {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-
-syntax extension galgas4SyntaxComponentSyntax {
-
-  #·······························································································
-
-  rule <syntax_instruction> ?!@galgasDeclarationAST ioDeclarations
-                            !@syntaxInstructionAST outInstruction {
-    $send$
-    let instructionLocation = @location.here
-    <expression> !?ioDeclarations ?let @semanticExpressionAST sentExpression
-    outInstruction = @syntaxSendInstructionAST.new {
-      !instructionLocation
-      !sentExpression
-    }
-  }
-
-  #·······························································································
-
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 

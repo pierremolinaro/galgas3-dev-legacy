@@ -126,22 +126,6 @@ gui cocoa {
 
   #··········································································
 
-  with lexique galgasScanner4 {
-    fileExtension : "ggsproject"
-    fileExtension : "ggs"
-    blockComment : "//"
-    title: "Source GALGAS 4"
-
-#    textMacro "Map" :
-#      "map @type {\n"
-#      "  public let @aType mProperty\n"
-#      "  %insertSetter insertKey %errorMessage \"the '%K' key is already declared in %L\"\n"
-#      "  %searchMethod searchKey %error%essage \"there is no '%K' key\"\n"
-#      "}\n"
-  }
-
-  #··········································································
-
   with lexique galgasTemplateScanner {
     fileExtension : "galgasTemplate"
     fileExtension : "ggsTemplate"

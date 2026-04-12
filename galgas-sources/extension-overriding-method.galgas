@@ -71,61 +71,6 @@ syntax extension galgas3DeclarationsSyntax {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-
-syntax extension galgas4DeclarationsSyntax {
-
-  #·······························································································
-
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
-    $override$
-    $proc$
-    $@type$ ?let @lstring className indexing typeReferenceOverrideExtensionMethodDefinition
-    $.$
-    $identifier$ ?let @lstring mMethodName indexing overrideExtensionMethodDefinition
-    <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
-    ${$
-    <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
-    let @location endOfMethodLocation = @location.here
-    $}$
-    ioDeclarations.mDeclarationList += !@overridingExtensionMethodAST.new {
-      !isPredefined: false # Is not predefined
-      !requiresSelfForAccessingProperty: true
-      !className
-      !mMethodName
-      !formalParameterList
-      !routineInstructionList
-      !endOfMethodLocation
-    }
-  }
-
-  #·······························································································
-
-  rule <method_declaration> ?let @lstring inClassName
-                            ?!@galgasDeclarationAST ioDeclarations {
-    $override$
-    $proc$
-    $identifier$ ?let @lstring mMethodName indexing overrideExtensionMethodDefinition
-    <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
-    ${$
-    <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
-    let @location endOfMethodLocation = @location.here
-    $}$
-    ioDeclarations.mDeclarationList += !@overridingExtensionMethodAST.new {
-      !isPredefined: false # Is not predefined
-      !requiresSelfForAccessingProperty: true
-      !inClassName
-      !mMethodName
-      !formalParameterList
-      !routineInstructionList
-      !endOfMethodLocation
-    }
-  }
-
-  #·······························································································
-
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
 #   AST
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 

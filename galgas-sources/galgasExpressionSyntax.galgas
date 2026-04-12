@@ -43,30 +43,3 @@ syntax galgas3ExpressionSyntax (galgasScanner3) {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-
-syntax galgas4ExpressionSyntax (galgasScanner4) {
-
-  #·······························································································
-
-  rule <type_definition> ?!@galgasDeclarationAST ioDeclarations
-                         !@lstring outTypeName
-
-  #·······························································································
-
-  rule <actual_parameter_list_within_parenthesis> ?!@galgasDeclarationAST ioDeclarations
-                                                  !@actualParameterListAST outActualParameterList
-
-  #·······························································································
-
-  rule <primary> ?!@galgasDeclarationAST ioDeclarations
-                 !@semanticExpressionAST outExpression {
-    $($
-    <expression> !?ioDeclarations ?outExpression
-    $)$
-  }
-
-  #·······························································································
-
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————

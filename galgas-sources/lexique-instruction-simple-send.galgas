@@ -41,21 +41,6 @@ syntax extension galgas3LexiqueComponentSyntax {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-
-syntax extension galgas4LexiqueComponentSyntax {
-
-  #·······························································································
-
-  rule <lexical_send_instruction> !@lexicalInstructionAST outInstruction {
-    $\$terminal\$$ ?let @lstring sentTerminal
-    outInstruction = @lexicalSimpleSendInstructionAST.new {!sentTerminal}
-  }
-
-  #·······························································································
-
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! CHECK LEXICAL INSTRUCTION
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 

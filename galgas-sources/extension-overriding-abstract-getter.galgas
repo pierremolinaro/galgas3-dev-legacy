@@ -86,65 +86,6 @@ syntax extension galgas3DeclarationsSyntax {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-
-syntax extension galgas4DeclarationsSyntax {
-
-  #·······························································································
-
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
-    $override$
-    $abstract$
-    $func$
-    $@type$ ?let className indexing typeReferenceOverrideAbstractExtensionGetter
-    $.$
-    $identifier$ ?let getterName indexing overrideAbstractExtensionGetterDefinition
-    <formal_input_parameter_list> !?ioDeclarations ?let @formalInputParameterListAST formalInputParameterList
-    $->$
-    <type_definition> !?ioDeclarations ?let returnedTypeName
-    select
-      $identifier$ ? let idf
-      warning idf : "an identifier is no longer required here" fixit { remove }
-    or
-    end
-    ioDeclarations.mDeclarationList += !@overridingAbstractExtensionGetterAST.new {
-      !isPredefined: false # Is not predefined
-      !className
-      !getterName
-      !formalInputParameterList
-      !returnedTypeName
-    }
-  }
-
-  #·······························································································
-
-  rule <method_declaration> ?let @lstring inClassName
-                            ?!@galgasDeclarationAST ioDeclarations {
-    $override$
-    $abstract$
-    $func$
-    $identifier$ ?let getterName indexing overrideAbstractExtensionGetterDefinition
-    <formal_input_parameter_list> !?ioDeclarations ?let @formalInputParameterListAST formalInputParameterList
-    $->$
-    <type_definition> !?ioDeclarations ?let returnedTypeName
-    select
-      $identifier$ ? let idf
-      warning idf : "an identifier is no longer required here" fixit { remove }
-    or
-    end
-    ioDeclarations.mDeclarationList += !@overridingAbstractExtensionGetterAST.new {
-      !isPredefined: false # Is not predefined
-      !inClassName
-      !getterName
-      !formalInputParameterList
-      !returnedTypeName
-    }
-  }
-
-  #·······························································································
-
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
 #   KEY REPRESENTATION
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 

@@ -86,56 +86,6 @@ syntax extension galgas3DeclarationsSyntax {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-
-syntax extension galgas4DeclarationsSyntax {
-
-  #·······························································································
-
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
-    $sortedlist$
-    $@type$ ?let sortedListTypeName indexing sortedListDefinition, structDefinition "-element"
-    ${$
-    var @propertyInCollectionListAST attributeList = {}
-    repeat
-    while
-      <property_declaration> !?ioDeclarations !? attributeList
-    end
-    $}$
-    ${$
-    var @sortedListSortDescriptorListAST sortDescriptorList = {}
-    repeat
-      <sortedlist_sort_descriptor> !? sortDescriptorList
-    while
-      $,$
-    end
-    $}$
-    ioDeclarations.mDeclarationList += !@sortedListDeclarationAST.new {
-      !isPredefined: false # Is not predefined
-      !sortedListTypeName
-      !attributeList
-      !sortDescriptorList
-    }
-  }
-
-  #·······························································································
-
-  rule <sortedlist_sort_descriptor> ?!@sortedListSortDescriptorListAST ioSortedListSortDescriptorList {
-    $identifier$ ?let @lstring mSortedAttributeName
-    let @bool mAscending
-    select
-      $<$
-      mAscending = true
-    or
-      $>$
-      mAscending = false
-    end
-    ioSortedListSortDescriptorList += !mSortedAttributeName !mAscending
-  }
-
-  #·······························································································
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
 #   ENTER IN GRAPH
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 

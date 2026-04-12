@@ -53,54 +53,6 @@ syntax extension galgas3ExpressionSyntax {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-
-syntax extension galgas4ExpressionSyntax {
-
-  #·······························································································
-
-  rule <factor> ?!@galgasDeclarationAST ioDeclarations
-                !@semanticExpressionAST outExpression {
-    <primary> !?ioDeclarations ? outExpression
-    repeat
-    while 
-      $[$
-      <non_empty_output_expression_list>
-        !?ioDeclarations
-        ?let @actualOutputExpressionList unused expressionList
-      error .here : "not handled yet"
-      $]$
-    while
-      $.$
-      $identifier$ ?let structFieldName
-      select
-        outExpression = @structPropertyAccessExpressionAST.new {
-          !structFieldName.location
-          !outExpression
-          !structFieldName
-        }
-      or #--- Getter call ?
-        let getterName = structFieldName
-        let startLocation = @location.next
-        $($
-        <output_expression_list> !?ioDeclarations ?let @actualOutputExpressionList expressionList
-        $)$
-        let endLocation = @location.here
-        outExpression = @getterCallExpressionAST.new {
-          !errorOnGetterCallInsteadOfPropertyRead: true
-          !outExpression
-          !getterName
-          !expressionList
-          ![startLocation union !endLocation]
-        }
-      end
-    end
-  }
-
-  #·······························································································
-
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 

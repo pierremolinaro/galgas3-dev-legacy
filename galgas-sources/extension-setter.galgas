@@ -82,61 +82,6 @@ syntax extension galgas3DeclarationsSyntax {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-
-syntax extension galgas4DeclarationsSyntax {
-
-  #·······························································································
-
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
-    $mutating$
-    $proc$
-    $@type$ ?let @lstring className indexing typeReferenceExtensionSetter
-    $.$
-    $identifier$ ?let @lstring setterName indexing extensionSetterDefinition
-    <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
-    ${$
-    <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
-    let @location endOfSetterLocation = @location.here
-    $}$
-    ioDeclarations.mDeclarationList += !@extensionSetterAST.new {
-      !isPredefined: false # Is not predefined
-      !requiresSelfForAccessingProperty: true
-      !className
-      !setterName
-      !formalParameterList
-      !routineInstructionList
-      !endOfSetterLocation
-    }
-  }
-
- #·····················································································································
-
-  rule <method_declaration> ?let @lstring inClassName
-                            ?!@galgasDeclarationAST ioDeclarations {
-    $mutating$
-    $proc$
-    $identifier$ ?let @lstring setterName indexing extensionSetterDefinition
-    <formal_parameter_list> !?ioDeclarations ?let @formalParameterListAST formalParameterList
-    ${$
-    <semantic_instruction_list> !?ioDeclarations ?let @semanticInstructionListAST routineInstructionList
-    let @location endOfSetterLocation = @location.here
-    $}$
-    ioDeclarations.mDeclarationList += !@extensionSetterAST.new {
-      !isPredefined: false # Is not predefined
-      !requiresSelfForAccessingProperty: true
-      !inClassName
-      !setterName
-      !formalParameterList
-      !routineInstructionList
-      !endOfSetterLocation
-    }
-  }
-
-  #·······························································································
-
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
 #   KEY REPRESENTATION
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 

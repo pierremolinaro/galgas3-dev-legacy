@@ -699,7 +699,7 @@ proc generateExtensionMethodNew ?let @unifiedTypeMapEntry inReceiverType
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
-  "ggs"
+  "galgas"
 }{
 }{
   template unifiedClassBodyForType "unified-class-body-for-type.h.galgasTemplate"
@@ -745,20 +745,6 @@ filewrapper typeGenerationTemplate in "+generation-templates/type_generation" {
     ?@string TYPE_IDENTIFIER
     ?@unifiedTypeMapEntry ASSOCIATED_LIST_TYPE
     ?@graphInsertModifierList INSERT_MODIFIER_LIST
-
-#---------- Array
-#  template arrayTypeHeader1 "GALGAS_array.h1.galgasTemplate"
-#    ?@string TYPE_NAME
-#    ?@string TYPE_IDENTIFIER
-#    ?@string ELEMENT_TYPE_IDENTIFIER
-#    ?@uint DIMENSION
-#
-#  template arrayTypeSpecificImplementation "GALGAS_array.cpp.galgasTemplate"
-#    ?@string TYPE_NAME
-#    ?@string TYPE_IDENTIFIER
-#    ?@string ELEMENT_TYPE_IDENTIFIER
-#    ?@uint DIMENSION
-#    ?@stringlist DIMENSION_LIST
 
 #---------- LIST MAP
   template listmapTypeHeader1 "GALGAS_listmap.h1.galgasTemplate"

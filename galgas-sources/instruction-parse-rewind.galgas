@@ -60,39 +60,6 @@ syntax extension galgas3SyntaxComponentSyntax {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-
-syntax extension galgas4SyntaxComponentSyntax {
-
-  #·······························································································
-
-  rule <syntax_instruction> ?!@galgasDeclarationAST ioDeclarations
-                            !@syntaxInstructionAST outInstruction {
-    $parse$
-    let instructionLocation = @location.here
-    $do$
-    var mParseDoBranchList = @listOfSyntaxInstructionList {}
-    <syntax_instruction_list> !?ioDeclarations ?let @syntaxInstructionList il
-    mParseDoBranchList += !il !@location.here
-    repeat
-      $rewind$
-      <syntax_instruction_list> !?ioDeclarations ?let @syntaxInstructionList instructionList
-      mParseDoBranchList += !instructionList !@location.here
-    while
-    end
-    $end$
-    let endOfInstruction = @location.here
-    outInstruction = @parseRewindInstruction.new {
-      !instructionLocation
-      !mParseDoBranchList
-      !endOfInstruction
-    }
-  }
-
-  #·······························································································
-
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! TRANSFORM
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 

@@ -48,28 +48,6 @@ syntax extension galgas3InstructionsSyntax {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-
-syntax extension galgas4InstructionsSyntax {
-
-  #·······························································································
-
-  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
-                              !@semanticInstructionAST outInstruction {
-    $self$
-    let instructionLocation = @location.here
-    $=$
-    <expression> !?ioDeclarations ?let @semanticExpressionAST sourceExpression
-    outInstruction = @selfAssignmentInstructionAST.new {
-      !instructionLocation
-      !sourceExpression
-    }
-  }
-
-  #·······························································································
-
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! CONTEXT
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 

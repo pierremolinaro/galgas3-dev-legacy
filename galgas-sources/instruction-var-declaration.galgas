@@ -117,51 +117,6 @@ syntax extension galgas3InstructionsSyntax {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-
-syntax extension galgas4InstructionsSyntax {
-
-  #·······························································································
-
-  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
-                              !@semanticInstructionAST outInstruction {
-    $var$
-    $identifier$ ?let variableName
-    $=$
-    <expression> !?ioDeclarations ?let @semanticExpressionAST sourceExpression
-    outInstruction = @localVariableDeclarationWithAssignmentAST.new {
-      !variableName.location
-      !variableName
-      !sourceExpression
-    }
-  }
-
-  #·······························································································
-
-  rule <semantic_instruction> ?!@galgasDeclarationAST ioDeclarations
-                              !@semanticInstructionAST outInstruction {
-    $var$
-    <type_definition> !?ioDeclarations ?let typeName
-    $identifier$ ?let variableName
-    select
-      outInstruction = @localVariableDeclarationNoAssignmentAST.new {!typeName.location !typeName !variableName}
-    or
-      $=$
-      <expression> !?ioDeclarations ?let @semanticExpressionAST sourceExpression
-      outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST.new {
-        !typeName.location
-        !false
-        !typeName
-        !variableName
-        !sourceExpression
-      }
-    end
-  }
-
-  #·······························································································
-
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! CONTEXT
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 

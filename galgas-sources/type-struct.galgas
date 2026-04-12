@@ -47,36 +47,6 @@ syntax extension galgas3DeclarationsSyntax {
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
-syntax extension galgas4DeclarationsSyntax {
-
-  #·······························································································
-
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
-    $struct$
-    $@type$ ?let @lstring structTypeName indexing structDefinition
-    ${$
-    var @propertyInCollectionListAST propertyList = {}
-    repeat
-    while
-      <property_declaration> !?ioDeclarations !?propertyList
-    while
-      <method_declaration> !structTypeName !?ioDeclarations
-    end
-    $}$
-    ioDeclarations.mDeclarationList += !@structDeclarationAST.new {
-      !isPredefined: false # Is not predefined
-      !structTypeName
-      !propertyList
-      !""
-    }
-  }
-
-  #·······························································································
-
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
-
 private func %once forbiddenKeysForStruct -> @stringset {
   result = {}
   result += !"description"

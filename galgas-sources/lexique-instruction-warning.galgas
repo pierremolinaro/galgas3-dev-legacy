@@ -42,22 +42,6 @@ syntax extension galgas3LexiqueComponentSyntax {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-
-syntax extension galgas4LexiqueComponentSyntax {
-
-  #·······························································································
-
-  rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
-    $warning$
-    $identifier$ ?let warningMessageName
-    ioInstructionList += !@lexicalWarningInstructionAST.new {!warningMessageName}
-  }
-
-  #·······························································································
-
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! CHECK LEXICAL INSTRUCTION
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 

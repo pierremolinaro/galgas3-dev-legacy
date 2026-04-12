@@ -2,7 +2,7 @@
 #                                           
 #  Compile all galgas sources               
 #                                           
-#  Copyright (C) 1997, ..., 2024 Pierre Molinaro.                                                                     
+#  Copyright (C) 1997, ..., 2026 Pierre Molinaro.                                                                     
 #                                           
 #  MIT License
 #                                           
@@ -22,7 +22,7 @@
 #                                           
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-project (3:7:1) -> "galgas" {
+project (3:7:2) -> "galgas" {
   %libpmAtPath : "../libpm"
 #--- Targets
   %makefile-macosx
@@ -33,9 +33,6 @@ project (3:7:1) -> "galgas" {
   %codeblocks-windows
   %codeblocks-linux32
   %codeblocks-linux64
-
-#--- JSON Parser
-#  "galgas-sources/json.galgas"
 
 #--- Command Line Options
   "galgas-sources/galgasCommandLineOptions.galgas"
@@ -87,7 +84,6 @@ project (3:7:1) -> "galgas" {
 
 #--- Scanners
   "galgas-sources/galgasScanner3.galgas"
-  "galgas-sources/galgasScanner4.galgas"
 
 #--- Type declaration
 #  "galgas-sources/type-array.galgas"

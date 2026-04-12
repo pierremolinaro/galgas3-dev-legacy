@@ -69,41 +69,6 @@ syntax extension galgas3DeclarationsSyntax {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-
-syntax extension galgas4DeclarationsSyntax {
-
-  #·······························································································
-
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
-    $dict$
-  #--- Dict type name
-    $@type$ ?let mDictTypeName indexing mapDefinition, structDefinition "-element"
-  #--- Dict key type name
-    $:$
-    <type_definition> !?ioDeclarations ?let keyTypeName
-  #--- Map properties
-    ${$
-    var propertyList = @propertyInCollectionListAST {}
-    repeat
-    while
-      <property_declaration> !?ioDeclarations !? propertyList
-    while
-      <method_declaration> !mDictTypeName !?ioDeclarations
-    end
-    $}$
-    ioDeclarations.mDeclarationList += !@dictDeclarationAST.new {
-      !isPredefined: false # Is not predefined
-      !mDictTypeName
-      !keyTypeName
-      !propertyList
-    }
-  }
-
-  #·······························································································
-
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
 #   ASSOCIATED ELEMENT
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 

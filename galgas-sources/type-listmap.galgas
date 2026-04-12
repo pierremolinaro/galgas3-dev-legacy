@@ -50,29 +50,6 @@ syntax extension galgas3DeclarationsSyntax {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-
-syntax extension galgas4DeclarationsSyntax {
-
-  #·······························································································
-
-  rule <declaration> ?!@galgasDeclarationAST ioDeclarations {
-    $listmap$
-    $@type$ ?let @lstring mListmapTypeName indexing listmapDefinition
-    $($
-    <type_definition> !?ioDeclarations ?let associatedListTypeName
-    $)$
-    ioDeclarations.mDeclarationList += !@listmapDeclarationAST.new {
-      !isPredefined: false # Is not predefined
-      !mListmapTypeName
-      !associatedListTypeName
-    }
-  }
-
-  #·······························································································
-
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
 #   ASSOCIATED ELEMENT
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 

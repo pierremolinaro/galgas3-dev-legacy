@@ -57,47 +57,6 @@ syntax extension galgas3SyntaxComponentSyntax {
 }
 
 #—————————————————————————————————————————————————————————————————————————————————————————————————
-
-syntax extension galgas4SyntaxComponentSyntax {
-
-  #·······························································································
-
-  rule <syntax_instruction> ?!@galgasDeclarationAST ioDeclarations
-                            !@syntaxInstructionAST outInstruction {
-    let @lstring mLabelName # No label : empty string
-    select
-      mLabelName = @lstring.new {!"" !@location.here}
-    or
-      $parse$
-      mLabelName = @lstring.new {!"parse" !@location.here}
-    or
-      $parse$
-      $identifier$ ? mLabelName
-    end
-    $<non_terminal>$ ?let @lstring mNonterminalName indexing ruleReference
-    <actual_parameter_list_within_parenthesis> !?ioDeclarations ?let @actualParameterListAST mActualParameterList
-  #--- Get syntax directed translation result string
-    let @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
-    select
-      grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone.new
-    or
-      $:>$
-      <syntax_directed_translation_result> !?ioDeclarations ?grammarInstructionSyntaxDirectedTranslationResult
-    end
-    outInstruction = @nonterminalCallInstruction.new {
-      !mNonterminalName.location
-      !mNonterminalName
-      !mLabelName
-      !mActualParameterList
-      !grammarInstructionSyntaxDirectedTranslationResult
-    }
-  }
-
-  #·······························································································
-
-}
-
-#—————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
 #—————————————————————————————————————————————————————————————————————————————————————————————————
 
