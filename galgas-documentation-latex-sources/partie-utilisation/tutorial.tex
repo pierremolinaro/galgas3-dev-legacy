@@ -167,7 +167,7 @@ Les séparateurs sont tous les caractères compris entre le point de code Unicod
 
 Les délimiteurs sont le point (« \tpp{.} ») et le point virgule (« \tpp{;} »).
 
-Un commentaire commence par le caractère dièse « \tpp{\#} ») et s'étend jusqu'à la fin de la ligne courante.
+Un commentaire commence par les caractères « \tpp{\//} ») et s'étend jusqu'à la fin de la ligne courante.
 
 
 \subsectionLabel{Définition syntaxique}{definitionSyntaxiqueLOGO}
@@ -664,13 +664,13 @@ Pour vous aider, voici une écriture possible de la dérivation de l'axiome~:
 
 \begin{galgas3}
 rule <start_symbol> {
-#-- Définition des routines
+//--- Définition des routines
   $PROGRAM$
   repeat
   while
     <routine_definition>
   end
-#--- Programme principal
+//--- Programme principal
   $BEGIN$
   <instruction_list>
   $END$
@@ -1074,7 +1074,7 @@ L'allure du calcul des tracés est la suivante (à placer à la fin de la règle
   @bool pendown = false
   @double x = 0.0
   @double y = 0.0
-  @double angle = 0.0 # Angle en degrés
+  @double angle = 0.0 // Angle en degrés
   for i in instructionList do
     ...
   end
@@ -1146,7 +1146,7 @@ Le calcul des tracés dans \tpp{logo-syntax.galgas} peut être complété par l'
   @bool pendown = false
   @double x = 0.0
   @double y = 0.0
-  @double angle = 0.0 # Angle en degrés
+  @double angle = 0.0 // Angle en degrés
   for i in instructionList do
     [i.mInstruction codeDisplay !?penDown !?x !?y !?angle]
   end
@@ -1232,7 +1232,7 @@ override method @forward codeDisplay
 Pour terminer, voici le code complet de l’axiome \ggst+<start_symbol>+, qui enchaîne analyse syntaxique, sémantique et génération du fichier SVG~:
 \begin{galgas3}
 rule <start_symbol> {
-#-- Definition des routines
+//--- Definition des routines
   $PROGRAM$
   @routineMap tableRoutines = {}
   @instructionList instructions = {}
@@ -1240,21 +1240,21 @@ rule <start_symbol> {
   while
     <routine_definition> !? tableRoutines
   end
-#--- Programme principal
+//--- Programme principal
   $BEGIN$
   <instruction_list> !? tableRoutines !? instructions
   $END$
   $.$
-#--- Calcul des instructions SVG
+//--- Calcul des instructions SVG
   @bool pendown = false
   @double x = 0.0
   @double y = 0.0
-  @double angle = 0.0 # Angle en degrés
+  @double angle = 0.0 // Angle en degrés
   @string SVG = ""
   for i in instructions do
     [i.mInstruction codeDisplay !?pendown !?x !?y !?angle !?SVG]
   end
-#--- Fichier de sortie
+//--- Fichier de sortie
   let @string sourceFilePath = @string.stringWithSourceFilePath
   let @string code = [filewrapper generationTemplate.svg
     ![sourceFilePath lastPathComponent]

@@ -89,7 +89,7 @@
   \immediate\closeout\tempfile
   \@esphack
   \endgroup
-  \immediate\write18{galgas -q --mode=latex:Galgas temp.galgas}
+  \immediate\write18{../makefile-unix/galgas -q --mode=latex:Galgas temp.galgas}
   {\medskip\begin{siderules3}\zeroEspaceAvantPonctuation{\tt{\input{temp.galgas.tex}}}\end{siderules3}}
 }
 \makeatother
@@ -129,7 +129,7 @@
   \immediate\closeout\tempfile
   \@esphack
   \endgroup
-  \immediate\write18{galgas -q --mode=latex:Galgas temp.galgas}
+  \immediate\write18{../makefile-unix/galgas -q --mode=latex:Galgas temp.galgas}
   {\singlespacing\begin{boxrules3}\zeroEspaceAvantPonctuation{\tt{\input{temp.galgas.tex}}}\end{boxrules3}}
 }
 \makeatother
@@ -170,136 +170,8 @@
       \immediate\openout\tempfile=temp.galgas%
       \immediate\write\tempfile{##1}%
       \immediate\closeout\tempfile%
-      \immediate\write18{galgas -q --mode=latex:Galgas temp.galgas}%
+      \immediate\write18{../makefile-unix/galgas -q --mode=latex:Galgas temp.galgas}%
       \colorbox{gray!6}{\zeroEspaceAvantPonctuation{\tt{\input{temp.galgas.tex}}}\unskip}%
-    }%
-  }%
-  \ifnum`#2=`\~\else\@makeother\~\fi%
-  \expandafter\endgroup%
-  \@tempa%
-}%
-\makeatother
-
-%-----------------------------------------------------------------------------------------------------------------------*
-% ENVIRONNEMENT galgas4 : affichage de code galgas 4
-%-----------------------------------------------------------------------------------------------------------------------*
-
-
-\newmdenv[
-  topline=false,
-  bottomline=false,
-  rightline=false,
-  skipabove=0pt,
-  skipbelow=0pt,
-  linecolor=blue,
-  backgroundcolor=gray!5,
-  linewidth=1pt,
-  frametitle={GALGAS 4},
-  frametitlefont=\normalfont\bfseries\scriptsize,
-  frametitlerule=true,
-  frametitleaboveskip=3pt,
-  frametitlebelowskip=3pt,
-]{siderules4}
-
-\makeatletter
-\newenvironment{galgas4}{%
-  \begingroup
-  \@bsphack
-  \immediate\openout\tempfile=temp.ggs%
-  \let\do\@makeother\dospecials
-  \catcode`\^^M\active
-  \verbatim@startline
-  \verbatim@addtoline
-  \verbatim@finish
-  \def\verbatim@processline{\immediate\write\tempfile{\the\verbatim@line}}%
-  \verbatim@start
-}{
-  \immediate\closeout\tempfile
-  \@esphack
-  \endgroup
-  \immediate\write18{galgas -q --mode=latex:Galgas temp.ggs}
-  {\medskip\begin{siderules4}\zeroEspaceAvantPonctuation{\tt{\input{temp.ggs.tex}}}\end{siderules4}}
-}
-\makeatother
-
-%-----------------------------------------------------------------------------------------------------------------------*
-% ENVIRONNEMENT galgas4box : affichage de code galgas encadré                                                           *
-%-----------------------------------------------------------------------------------------------------------------------*
-
-\newmdenv[
-  skipabove=0pt,
-  skipbelow=0pt,
-  linecolor=blue,
-  backgroundcolor=gray!5,
-  linewidth=1pt,
-  frametitle={GALGAS 4},
-  frametitlefont=\normalfont\bfseries\scriptsize,
-  frametitlerule=true,
-  frametitleaboveskip=3pt,
-  frametitlebelowskip=3pt,
-]{boxrules4}
-
-%-----------------------------------------------------------------------------------------------------------------------*
-
-\makeatletter
-\newenvironment{galgas4box}{%
-  \begingroup
-  \@bsphack
-  \immediate\openout\tempfile=temp.ggs%
-  \let\do\@makeother\dospecials
-  \catcode`\^^M\active
-  \verbatim@startline
-  \verbatim@addtoline
-  \verbatim@finish
-  \def\verbatim@processline{\immediate\write\tempfile{\the\verbatim@line}}%
-  \verbatim@start
-}{
-  \immediate\closeout\tempfile
-  \@esphack
-  \endgroup
-  \immediate\write18{galgas -q --mode=latex:Galgas temp.ggs}
-  {\singlespacing\begin{boxrules4}\zeroEspaceAvantPonctuation{\tt{\input{temp.ggs.tex}}}\end{boxrules4}}
-}
-\makeatother
-
-%-----------------------------------------------------------------------------------------------------------------------*
-% COMMANDE \ggsq : affichage de code en ligne galgas 4
-%-----------------------------------------------------------------------------------------------------------------------*
-
-\makeatletter
-\newcommand*\ggsq{%
-  \@bsphack%
-  \begingroup%
-  \let\do\@makeother\dospecials%
-  \let\do\do@noligs\verbatim@nolig@list%
-  \catcode`\^^M=15\relax%
-  \@vobeyspaces%
-  \@ggsq{\temporary}%
-}%
-\newcommand\@ggsq[2]{%
-  \catcode`-=12\relax%
-  \catcode`<=12\relax%
-  \catcode`>=12\relax%
-  \catcode`,=12\relax%
-  \catcode`'=12\relax%
-  \catcode``=12\relax%
-  \catcode`#2\active%
-  \catcode`~\active%
-  \lccode`\~`#2\relax%
-  \begingroup%
-  \lowercase{%
-    \def\@tempa##1~{%
-      \expandafter\endgroup%
-      \expandafter\DeclareRobustCommand%
-      \expandafter*%
-      \expandafter#1%
-      \expandafter{\@tempa}%
-      \@esphack%
-      \immediate\openout\tempfile=temp.ggs%
-      \immediate\write\tempfile{##1}%
-      \immediate\closeout\tempfile%
-      \immediate\write18{galgas -q --mode=latex:Galgas temp.ggs}%
-      \colorbox{gray!6}{\zeroEspaceAvantPonctuation{\tt{\input{temp.ggs.tex}}}\unskip}%
     }%
   }%
   \ifnum`#2=`\~\else\@makeother\~\fi%

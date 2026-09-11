@@ -35,17 +35,6 @@ map @MaTable {
 \end{galgas3}
 
 
-\begin{galgas4}
-map @MaTable {
-  public let @string mPremier
-  public var @bool mSecond
-  %insertSetter insertKey %errorMessage "the '%K' key is already declared in %L"
-  %searchMethod searchKey %errorMessage "the '%K' key is not defined"
-  %removeSetter removeKey %errorMessage "the '%K' key is not defined"
-  %insertOrReplaceSetter
-}
-\end{galgas4}
-
 
 
 
@@ -134,10 +123,6 @@ Un \emph{setter} d'insertion est déclaré par~:
 insert nom error message "message_erreur"
 \end{galgas3}
 
-\begin{galgas4}
-%insertSetter nom %errorMessage "message_erreur"
-\end{galgas4}
-
 L'identificateur \ggst+nom+ donne un nom au \emph{setter} d'insertion~; ce nom doit être unique parmi les \emph{setters} d'insertion et de retrait. La chaîne de caractères \ggst+"message_erreur"+ définit le message d'erreur qui est affiché en cas de tentative d'une clé déjà existante. Cette chaîne accepte deux séquences d'échappement~:
 \begin{itemize}
   \item \texttt{\%K}, qui est remplacée par la chaîne de caractères de la clé existante~;
@@ -164,7 +149,7 @@ Par exemple~:
 
 \sectionLabel{Setter d'insertion ou de remplacement}{setterInsertOrReplace}
 
-Une \ggsq+map+ peut déclarer un \emph{setter} effectuant selon le contexte une insertion ou un remplacement~:
+Une \ggst+map+ peut déclarer un \emph{setter} effectuant selon le contexte une insertion ou un remplacement~:
 \begin{itemize}
   \item si la clé n'existe pas, une insertion est réalisée~;
   \item si elle existe , le remplacement est effectué.
@@ -176,13 +161,9 @@ Un \emph{setter} d'insertion ou de remplacement est déclaré par~:
 insert or replace
 \end{galgas3}
 
-\begin{galgas4}
-%insertOrReplaceSetter
-\end{galgas4}
-
-Son nom est toujours \ggsq!insertOrReplace!. Il est appelé dans une \emph{instruction d'appel de setter}, comprenant tous ses arguments en sortie~:
+Son nom est toujours \ggst!insertOrReplace!. Il est appelé dans une \emph{instruction d'appel de setter}, comprenant tous ses arguments en sortie~:
 \begin{itemize}
-  \item le premier argument est une expression de type \ggsq+@lstring+ qui caractérise la clé à insérer~;
+  \item le premier argument est une expression de type \ggst+@lstring+ qui caractérise la clé à insérer~;
   \item ensuite, pour chaque propriété déclarée, une expression du type de cette propriété.
 \end{itemize}
 
@@ -214,10 +195,6 @@ Une \emph{méthode} de recherche est déclarée par~:
 \begin{galgas3}
 search nom error message "message_erreur"
 \end{galgas3}
-
-\begin{galgas4}
-%searchMethod nom %errorMessage "message_erreur"
-\end{galgas4}
 
 L'identificateur \ggst+nom+ donne un nom à la \emph{méthode} de recherche~; ce nom doit être unique parmi ces \emph{méthodes}. La chaîne de caractères \ggst+"message_erreur"+ définit le message d'erreur qui est affiché en cas de recherche d'une clé inexistante. Cette chaîne accepte une séquence d'échappement~:
 \begin{itemize}
@@ -275,10 +252,6 @@ Un \emph{setter} de retrait est déclaré par~:
 \begin{galgas3}
 remove nom error message "message_erreur"
 \end{galgas3}
-
-\begin{galgas4}
-%removeSetter nom %errorMessage "message_erreur"
-\end{galgas4}
 
 L'identificateur \ggst+nom+ donne un nom au \emph{setter} de retrait~; ce nom doit être unique parmi les \emph{setters} d'insertion et de retrait. La chaîne de caractères \ggst+"message_erreur"+ définit le message d'erreur qui est affiché en cas de recherche d'une clé inexistante. Cette chaîne accepte une séquence d'échappement~:
 \begin{itemize}
