@@ -309,15 +309,21 @@ LOGGING loc: <@location:nowhere:1:1>
 LOGGING r: <@uint:5>
 LOGGING r: <@uint:5>
 *************************************** begin of introspection test
---- Type list (84 types)
+--- Type list (100 types)
   @2lstringlist
   @2lstringlist-element
   @2stringlist
   @2stringlist-element
+  @A
+  @A-weak
   @A_A
   @A_A-weak
+  @B
+  @B-weak
   @B_B
   @B_B-weak
+  @C_C
+  @C_C-weak
   @TestExtensionMethod
   @TestExtensionMethod-weak
   @TestExtensionSetter
@@ -330,6 +336,8 @@ LOGGING r: <@uint:5>
   @abstractOverridingTestExtensionSetter-weak
   @abstractTestExtensionSetter
   @abstractTestExtensionSetter-weak
+  @adjMat
+  @adjMat-weak
   @baseClassForTypeCastInSetterCall
   @baseClassForTypeCastInSetterCall-weak
   @bigint
@@ -385,6 +393,14 @@ LOGGING r: <@uint:5>
   @stringset
   @structTest
   @timer
+  @toto
+  @toto-weak
+  @toto1
+  @toto1-weak
+  @toto2
+  @toto2-weak
+  @toto3
+  @toto3-weak
   @type
   @typelist
   @typelist-element
@@ -404,22 +420,15 @@ LOGGING y: <@uint:2>
 LOGGING result: 
 *************************************** begin of extension reader test
 LOGGING s: <@string:"-3-4-4">
-Carré de 9: 81
-*************************************** begin of extension procs
-2
 *************************************** begin of extension setter test
 LOGGING u: <@uint:3>
 LOGGING v: <@TestExtensionSetter:[@TestExtensionSetter:<@uint:3>, <@string:"Hello World">]>
 Appel @inheritedClassForTypeCastInSetterCall unSetter
-*************************************** begin of mutating proc test
-v = 179
-v = 183
-v = 752
 *************************************** begin of type extension test
-LOGGING Square of 7: <@uint64:49>
+LOGGING Square of 7: <@bigint: 49>
 LOGGING Sum 1 + 2 + 3 + 4: <@uint:10>
 LOGGING Hello !: <@string:"Hello !">
-LOGGING v: <@uint64:49>
+LOGGING v: <@bigint: 49>
 LOGGING u: <@uint:10>
 LOGGING s: <@string:"Hello !">
 LOGGING ls: <struct @lstring:<@string:"Hello3">, <@location:nowhere:1:1>>

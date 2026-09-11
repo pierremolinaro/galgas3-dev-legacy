@@ -182,15 +182,15 @@ runCommand (
   [
     "clone", "--depth=1",
     "--single-branch", "--branch", "evolution-galgas-3",
-    "https://github.com/pierremolinaro/galgas-dev.git"
+    "https://github.com/pierremolinaro/galgas3-dev-legacy.git"
   ]
 )
-fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR_TEMPORARY + "/galgas-dev")
+fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR_TEMPORARY + "/galgas3-dev-legacy")
 //-------------------- Obtenir l'année
 let ANNÉE = Calendar.current.component (.year, from: Date ())
 print ("ANNÉE : \(ANNÉE)")
 //-------------------- Obtenir le numéro de version GALGAS
-  let url = URL (fileURLWithPath: DISTRIBUTION_DIR_TEMPORARY + "/galgas-dev/build/output/project_header.h")
+  let url = URL (fileURLWithPath: DISTRIBUTION_DIR_TEMPORARY + "/galgas3-dev-legacy/build/output/project_header.h")
   let contents = try! String (contentsOf: url, encoding: .utf8)
   let components = contents.components (separatedBy: "\"")
   let VERSION_GALGAS = components [1]
@@ -203,7 +203,7 @@ print ("ANNÉE : \(ANNÉE)")
   runCommand ("/bin/mv", [DISTRIBUTION_DIR_TEMPORARY, DISTRIBUTION_DIR])
   fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
 //-------------------- Fixer le numéro de version
-  let plistFileFullPath = DISTRIBUTION_DIR + "/galgas-dev/project-xcode-galgas/Info-developer.plist"
+  let plistFileFullPath = DISTRIBUTION_DIR + "/galgas3-dev-legacy/project-xcode-galgas/Info-developer.plist"
   let data : Data = try Data (contentsOf: URL (fileURLWithPath: plistFileFullPath))
   var plistDictionary : [String : Any]
   if let d = try PropertyListSerialization.propertyList (from: data, format: nil) as? [String : Any] {
@@ -218,12 +218,12 @@ print ("ANNÉE : \(ANNÉE)")
   let plistNewData = try PropertyListSerialization.data (fromPropertyList: plistDictionary, format: .binary, options: 0)
   try plistNewData.write (to: URL (fileURLWithPath: plistFileFullPath), options: .atomic)
 //-------------------- Mettre a jour les numéros de version
-  remplacerAnneeEtVersionGALGAS (ANNÉE, VERSION_GALGAS, file: DISTRIBUTION_DIR + "/galgas-dev/project-xcode-galgas/en.lproj/InfoPlist.strings")
-  remplacerAnneeEtVersionGALGAS (ANNÉE, VERSION_GALGAS, directory: DISTRIBUTION_DIR + "/galgas-dev/galgas-sources")
-  remplacerAnneeEtVersionGALGAS (ANNÉE, VERSION_GALGAS, directory: DISTRIBUTION_DIR + "/galgas-dev/libpm/command_line_interface")
-  remplacerAnneeEtVersionGALGAS (ANNÉE, VERSION_GALGAS, directory: DISTRIBUTION_DIR + "/galgas-dev/build")
+  remplacerAnneeEtVersionGALGAS (ANNÉE, VERSION_GALGAS, file: DISTRIBUTION_DIR + "/galgas3-dev-legacy/project-xcode-galgas/en.lproj/InfoPlist.strings")
+  remplacerAnneeEtVersionGALGAS (ANNÉE, VERSION_GALGAS, directory: DISTRIBUTION_DIR + "/galgas3-dev-legacy/galgas-sources")
+  remplacerAnneeEtVersionGALGAS (ANNÉE, VERSION_GALGAS, directory: DISTRIBUTION_DIR + "/galgas3-dev-legacy/libpm/command_line_interface")
+  remplacerAnneeEtVersionGALGAS (ANNÉE, VERSION_GALGAS, directory: DISTRIBUTION_DIR + "/galgas3-dev-legacy/build")
 //-------------------- Construire la documentation Latex
-  let latexDir = DISTRIBUTION_DIR + "/galgas-dev/galgas-documentation-latex-sources"
+  let latexDir = DISTRIBUTION_DIR + "/galgas3-dev-legacy/galgas-documentation-latex-sources"
   let directoryEnumerator = fm.enumerator (atPath: latexDir)
   while let filename = directoryEnumerator?.nextObject () as? String {
     if filename.hasSuffix (".tex") {
@@ -234,58 +234,58 @@ print ("ANNÉE : \(ANNÉE)")
   runCommand ("/bin/cp", [latexDir + "/galgas-book.pdf", "galgas-\(VERSION_GALGAS).pdf"])
   runCommand ("/bin/rm", ["-fr", latexDir])
 //-------------------- Vérifier les programmes d'exemple
-  runCommand (DISTRIBUTION_DIR + "/galgas-dev/sample_code/+build-all-unix.command", [])
-  runCommand ("/bin/rm", ["-fr", DISTRIBUTION_DIR + "/galgas-dev/sample_code"])
+  runCommand (DISTRIBUTION_DIR + "/galgas3-dev-legacy/sample_code/+build-all-unix.command", [])
+  runCommand ("/bin/rm", ["-fr", DISTRIBUTION_DIR + "/galgas3-dev-legacy/sample_code"])
 //-------------------- Exécuter les tests
-  runCommand (DISTRIBUTION_DIR + "/galgas-dev/testsuite/+run-test-suite.command", [])
-  runCommand ("/bin/rm", ["-fr", DISTRIBUTION_DIR + "/galgas-dev/testsuite"])
+  runCommand (DISTRIBUTION_DIR + "/galgas3-dev-legacy/testsuite/+run-test-suite.command", [])
+  runCommand ("/bin/rm", ["-fr", DISTRIBUTION_DIR + "/galgas3-dev-legacy/testsuite"])
 //-------------------- Vérifier la création de projet
-  runCommand (DISTRIBUTION_DIR + "/galgas-dev/+verifier-create-galgas.command", [])
+  runCommand (DISTRIBUTION_DIR + "/galgas3-dev-legacy/+verifier-create-galgas.command", [])
 //-------------------- Créer le répertoire recevant les outils ligne de commande
   let cliToolsDir = DISTRIBUTION_DIR + "/galgas-\(VERSION_GALGAS)-tools"
   runCommand ("/bin/mkdir", [cliToolsDir])
 //-------------------- Créer l'archive de l'executable osx (release et debug)
-  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas-dev/makefile-unix")
+  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas3-dev-legacy/makefile-unix")
   runCommand ("/usr/bin/python3", ["build.py"])
   runCommand ("/usr/bin/bzip2", ["-9", "galgas"])
   runCommand ("/usr/bin/bzip2", ["-9", "galgas-debug"])
   fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
-  runCommand ("/bin/mv", [DISTRIBUTION_DIR + "/galgas-dev/makefile-unix/galgas.bz2", cliToolsDir + "/galgas.osx.bz2"])
-  runCommand ("/bin/mv", [DISTRIBUTION_DIR + "/galgas-dev/makefile-unix/galgas-debug.bz2", cliToolsDir + "/galgas-debug.osx.bz2"])
+  runCommand ("/bin/mv", [DISTRIBUTION_DIR + "/galgas3-dev-legacy/makefile-unix/galgas.bz2", cliToolsDir + "/galgas.osx.bz2"])
+  runCommand ("/bin/mv", [DISTRIBUTION_DIR + "/galgas3-dev-legacy/makefile-unix/galgas-debug.bz2", cliToolsDir + "/galgas-debug.osx.bz2"])
   runCommand ("/bin/rm", ["-fr", "galgas-dev/makefile-unix"])
   runCommand ("/bin/rm", ["-fr", "galgas-dev/build/cli-objects"])
 //-------------------- Creer l'archive de l'executable windows (release et debug)
-  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas-dev/makefile-win32-on-macosx")
+  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas3-dev-legacy/makefile-win32-on-macosx")
   runCommand ("/usr/bin/python3", ["build.py"])
   runCommand ("/usr/bin/bzip2", ["-9", "galgas.exe"])
   runCommand ("/usr/bin/bzip2", ["-9", "galgas-debug.exe"])
   fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
-  runCommand ("/bin/mv", [DISTRIBUTION_DIR + "/galgas-dev/makefile-win32-on-macosx/galgas.exe.bz2", cliToolsDir + "/galgas.exe.bz2"])
-  runCommand ("/bin/mv", [DISTRIBUTION_DIR + "/galgas-dev/makefile-win32-on-macosx/galgas-debug.exe.bz2", cliToolsDir + "/galgas-debug.exe.bz2"])
+  runCommand ("/bin/mv", [DISTRIBUTION_DIR + "/galgas3-dev-legacy/makefile-win32-on-macosx/galgas.exe.bz2", cliToolsDir + "/galgas.exe.bz2"])
+  runCommand ("/bin/mv", [DISTRIBUTION_DIR + "/galgas3-dev-legacy/makefile-win32-on-macosx/galgas-debug.exe.bz2", cliToolsDir + "/galgas-debug.exe.bz2"])
   runCommand ("/bin/rm", ["-fr", "galgas-dev/makefile-win32-on-macosx"])
   runCommand ("/bin/rm", ["-fr", "galgas-dev/build/cli-objects"])
 //-------------------- Creer l'archive de l'executable x86 linux 32 (release et debug)
-  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas-dev/makefile-x86linux32-on-macosx")
+  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas3-dev-legacy/makefile-x86linux32-on-macosx")
   runCommand ("/usr/bin/python3", ["build.py"])
   runCommand ("/usr/bin/zip", ["-9", "galgas.zip", "galgas"])
   runCommand ("/usr/bin/zip", ["-9", "galgas-debug.zip", "galgas-debug"])
   fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
-  runCommand ("/bin/mv", [DISTRIBUTION_DIR + "/galgas-dev/makefile-x86linux32-on-macosx/galgas.zip", cliToolsDir + "/galgas-x86-linux32.zip"])
-  runCommand ("/bin/mv", [DISTRIBUTION_DIR + "/galgas-dev/makefile-x86linux32-on-macosx/galgas-debug.zip", cliToolsDir + "/galgas-debug-x86-linux32.zip"])
+  runCommand ("/bin/mv", [DISTRIBUTION_DIR + "/galgas3-dev-legacy/makefile-x86linux32-on-macosx/galgas.zip", cliToolsDir + "/galgas-x86-linux32.zip"])
+  runCommand ("/bin/mv", [DISTRIBUTION_DIR + "/galgas3-dev-legacy/makefile-x86linux32-on-macosx/galgas-debug.zip", cliToolsDir + "/galgas-debug-x86-linux32.zip"])
   runCommand ("/bin/rm", ["-fr", "galgas-dev/makefile-x86linux32-on-macosx"])
   runCommand ("/bin/rm", ["-fr", "galgas-dev/build/cli-objects"])
 //-------------------- Creer l'archive de l'executable x86 linux 64 (release et debug)
-  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas-dev/makefile-x86linux64-on-macosx")
+  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas3-dev-legacy/makefile-x86linux64-on-macosx")
   runCommand ("/usr/bin/python3", ["build.py"])
   runCommand ("/usr/bin/zip", ["-9", "galgas.zip", "galgas"])
   runCommand ("/usr/bin/zip", ["-9", "galgas-debug.zip", "galgas-debug"])
   fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
-  runCommand ("/bin/mv", [DISTRIBUTION_DIR + "/galgas-dev/makefile-x86linux64-on-macosx/galgas.zip", cliToolsDir + "/galgas-x86-linux64.zip"])
-  runCommand ("/bin/mv", [ DISTRIBUTION_DIR + "/galgas-dev/makefile-x86linux64-on-macosx/galgas-debug.zip", cliToolsDir + "/galgas-debug-x86-linux64.zip"])
+  runCommand ("/bin/mv", [DISTRIBUTION_DIR + "/galgas3-dev-legacy/makefile-x86linux64-on-macosx/galgas.zip", cliToolsDir + "/galgas-x86-linux64.zip"])
+  runCommand ("/bin/mv", [ DISTRIBUTION_DIR + "/galgas3-dev-legacy/makefile-x86linux64-on-macosx/galgas-debug.zip", cliToolsDir + "/galgas-debug-x86-linux64.zip"])
   runCommand ("/bin/rm", ["-fr", "galgas-dev/makefile-x86linux64-on-macosx"])
   runCommand ("/bin/rm", ["-fr", "galgas-dev/build/cli-objects"])
 //-------------------- Compiler le projet Xcode
-  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas-dev/project-xcode-galgas")
+  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas3-dev-legacy/project-xcode-galgas")
   runCommand ("/bin/rm", ["-fr", "build"])
   runCommand ("/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild", ["-target", "GALGAS Cocoa"])
   let PRODUCT_NAME : String
@@ -296,25 +296,25 @@ print ("ANNÉE : \(ANNÉE)")
     PRODUCT_NAME = "galgas"
   }
 //-------------------- Vérifier GMP
-  runCommand (DISTRIBUTION_DIR + "/galgas-dev/project-xcode-galgas/build/Default/galgas", ["--check-gmp"])
-  runCommand (DISTRIBUTION_DIR + "/galgas-dev/project-xcode-galgas/build/Default/galgas-debug", ["--check-gmp"])
+  runCommand (DISTRIBUTION_DIR + "/galgas3-dev-legacy/project-xcode-galgas/build/Default/galgas", ["--check-gmp"])
+  runCommand (DISTRIBUTION_DIR + "/galgas3-dev-legacy/project-xcode-galgas/build/Default/galgas-debug", ["--check-gmp"])
 //-------------------- Recompiler en utilsant différents modes de génération
-  runCommand (DISTRIBUTION_DIR + "/galgas-dev/project-xcode-galgas/build/Default/galgas", ["--generate-many-cpp-files", DISTRIBUTION_DIR + "/galgas-dev/+galgas.galgasProject"])
-  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas-dev/makefile-unix")
+  runCommand (DISTRIBUTION_DIR + "/galgas3-dev-legacy/project-xcode-galgas/build/Default/galgas", ["--generate-many-cpp-files", DISTRIBUTION_DIR + "/galgas3-dev-legacy/+galgas.galgasProject"])
+  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas3-dev-legacy/makefile-unix")
   runCommand ("/usr/bin/python3", ["build.py"])
   fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
-  runCommand (DISTRIBUTION_DIR + "/galgas-dev/project-xcode-galgas/build/Default/galgas", ["--generate-many-cpp-files", "--generate-one-cpp-header", DISTRIBUTION_DIR + "/galgas-dev/+galgas.galgasProject"])
-  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas-dev/makefile-unix")
+  runCommand (DISTRIBUTION_DIR + "/galgas3-dev-legacy/project-xcode-galgas/build/Default/galgas", ["--generate-many-cpp-files", "--generate-one-cpp-header", DISTRIBUTION_DIR + "/galgas3-dev-legacy/+galgas.galgasProject"])
+  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas3-dev-legacy/makefile-unix")
   runCommand ("/usr/bin/python3", ["clean.py"])
   runCommand ("/usr/bin/python3", ["build.py"])
   fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
-  runCommand (DISTRIBUTION_DIR + "/galgas-dev/project-xcode-galgas/build/Default/galgas", ["--generate-one-cpp-header", DISTRIBUTION_DIR + "/galgas-dev/+galgas.galgasProject"])
-  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas-dev/makefile-unix")
+  runCommand (DISTRIBUTION_DIR + "/galgas3-dev-legacy/project-xcode-galgas/build/Default/galgas", ["--generate-one-cpp-header", DISTRIBUTION_DIR + "/galgas3-dev-legacy/+galgas.galgasProject"])
+  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas3-dev-legacy/makefile-unix")
   runCommand ("/usr/bin/python3", ["clean.py"])
   runCommand ("/usr/bin/python3", ["build.py"])
   fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
 //-------------------- Construction package
-  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas-dev")
+  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas3-dev-legacy")
   let packageFile = PRODUCT_NAME + "-" + VERSION_GALGAS + ".pkg"
   runCommand ("/usr/bin/productbuild", ["--component-compression", "auto", "--component", "project-xcode-galgas/build/Default/cocoaGalgas.app", "/Applications", packageFile])
   runCommand ("/bin/cp", [packageFile, DISTRIBUTION_DIR])
@@ -367,11 +367,11 @@ print ("ANNÉE : \(ANNÉE)")
   let nomJSON = DISTRIBUTION_DIR + "/" + PRODUCT_NAME + "-" + VERSION_GALGAS + ".json"
   try jsonData.write (to: URL (fileURLWithPath: nomJSON), options: .atomic)
 //--- Vérifier la signature
-  runCommand ("/usr/bin/codesign", ["-dv", "--verbose=4", DISTRIBUTION_DIR + "/galgas-dev/project-xcode-galgas/build/Default/cocoaGalgas.app"])
+  runCommand ("/usr/bin/codesign", ["-dv", "--verbose=4", DISTRIBUTION_DIR + "/galgas3-dev-legacy/project-xcode-galgas/build/Default/cocoaGalgas.app"])
 //--- Supprimer les répertoires intermédiaires
   fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
-  while fm.fileExists (atPath: DISTRIBUTION_DIR + "/galgas-dev") {
-    runCommand ("/bin/rm", ["-fr", DISTRIBUTION_DIR + "/galgas-dev"])
+  while fm.fileExists (atPath: DISTRIBUTION_DIR + "/galgas3-dev-legacy") {
+    runCommand ("/bin/rm", ["-fr", DISTRIBUTION_DIR + "/galgas3-dev-legacy"])
   }
   //---
   let duréeConstruction = Date ().timeIntervalSince (débutConstruction)

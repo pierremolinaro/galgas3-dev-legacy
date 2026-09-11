@@ -1,0 +1,32 @@
+
+
+list @aList {
+  public var @string mString
+  public var @uint mInt
+}
+
+listmap @myListMap (@aList)
+
+proc testsuite_listmap {
+  message "*************************************** begin of listmap\n"
+  var m = @myListMap {}
+  m += !"d" !"g" !37
+  m += !"a" !"b" !23
+  m += !"c" !"f" !11
+  m += !"a" !"c" !98
+  log m
+  let @uint c = [m count]
+  log c
+  let @stringset s = [m allKeys]
+  log s
+  let @stringlist sl = [m keyList]
+  log sl
+  let @aList aList = [m listForKey !"a"]
+  log aList
+  message "--- test foreach for listmap\n"
+  for e in m do
+    log "key: " : e.key
+    log "list: " : e.mList
+  end
+}
+
