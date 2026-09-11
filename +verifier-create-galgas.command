@@ -30,7 +30,4 @@ cd ${DIR}/${TEST}/makefile-unix &&
 echo "---------------- EXECUTE DEBUG --------------------------" &&
 cd ${DIR}/${TEST}/makefile-unix &&
 ./${TEST}-debug --help &&
-echo "---------------- REMOVE PROJECT --------------------------" &&
-cd ${DIR} &&
-rm -fr ${DIR}/${TEST} &&
 echo "---------------- SUCCES --------------------------"
