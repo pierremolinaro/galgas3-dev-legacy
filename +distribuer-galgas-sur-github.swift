@@ -33,11 +33,9 @@ let NOTES : [String] = [
 let BUGFIXES : [String] = [
 ]
 let CHANGES : [String] = [
-  "Remplacement de GMP par la librairie BigSignedBigUnsigned",
-  "Re-écriture de MD5 pour éliminer les débordements atrithmétiques"
+  "Mise à jour de la version minimum Mac OS : 14.6 (Sonoma)"
 ]
 let NEWS : [String] = [
-  "Ajout de @string SHA256"
 ]
 
 //--------------------------------------------------------------------------------------------------

@@ -352,7 +352,7 @@ proc updateGalgasTargets
       MACOSX_DEPLOYMENT_TARGET = mFeatureValue
     end
   else
-    MACOSX_DEPLOYMENT_TARGET = ["10.13" nowhere]
+    MACOSX_DEPLOYMENT_TARGET = ["14.6" nowhere]
   end
 #----------------------------------------------------------- LIBPM path
   let @string libpmPath
