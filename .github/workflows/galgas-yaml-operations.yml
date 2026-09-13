@@ -90,7 +90,7 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
 
     - run: ./makefile-unix/build+debug.py && ./makefile-unix/galgas-debug --check-big-int
 
@@ -101,7 +101,7 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
 
     - run: ./makefile-unix/build+debug.py && ./makefile-unix/galgas-debug --check-big-int
 
